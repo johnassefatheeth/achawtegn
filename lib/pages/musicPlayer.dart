@@ -26,7 +26,7 @@ class mPlayer extends StatelessWidget {
               ),
           Expanded(
             child: Container(
-              color: Colors.blue,)),
+              color: whitecolor,)),
 
         ],
       )
