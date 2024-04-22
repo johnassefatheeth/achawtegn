@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/instance_manager.dart';
 import 'package:musica/components/Drawerlist.dart';
@@ -58,35 +59,47 @@ class home extends StatelessWidget {
           return Text('no Songs found',style: Ourstyle());
         }
         else {
-          print(snapshot);
           return Padding( 
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
           physics:const BouncingScrollPhysics(),
-          itemCount: 20,
+          itemCount: snapshot.data!.length,
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(top: 5),
-              child:ListTile(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                tileColor: bgcolor,
-                title: Text("music name",
-                style: Ourstyle(),
-                ),
-                subtitle:Text("artist",
-                style: Ourstyle(),
-                ),
-                leading:const Icon(
-                  Icons.music_note,
-                  color: whitecolor,
-                  size:32
-                ),
-                trailing:const Icon(
-                  Icons.play_arrow,
-                  color: whitecolor,
-                  size:26
+              child:Obx(()=>ListTile(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  ),
+                  tileColor: bgcolor,
+                  title: Text(snapshot.data![index].displayNameWOExt,
+                  style: Ourstyle(),
+                  ),
+                  subtitle:Text( "${snapshot.data![index].artist}",
+                  style: Ourstyle(),
+                  ),
+                  leading:QueryArtworkWidget(
+                    id: snapshot.data![index].id, 
+                    type: ArtworkType.AUDIO,
+                    nullArtworkWidget: const Icon(
+                      Icons.music_note,
+                      color: whitecolor,
+                      size:32
+                    ),
+                    ),
+                  trailing:controller.playIndex.value==index &&controller.isPLaying.value?
+                  const Icon(
+                    Icons.play_arrow,
+                    color: whitecolor,
+                    size:26
+                  ):const Icon(
+                    Icons.music_note_outlined,
+                    color: whitecolor,
+                    size:26
+                  ),
+                  onTap: () {
+                    controller.playSong(snapshot.data![index].uri,index);
+                  },
                 ),
               )
               );
