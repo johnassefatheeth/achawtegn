@@ -49,20 +49,21 @@ class home extends StatelessWidget {
           uriType: UriType.EXTERNAL
         ), 
       builder: (BuildContext context, snapshot) {
-        if(snapshot.data==null){
+        if(snapshot.data == null){
           return const Center(
-            child: CircularProgressIndicator(),
+            child:  CircularProgressIndicator(),
           );
         }
         else if(snapshot.data!.isEmpty){
           return Text('no Songs found',style: Ourstyle());
         }
         else {
+          print(snapshot);
           return Padding( 
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
           physics:const BouncingScrollPhysics(),
-          itemCount: 100,
+          itemCount: 20,
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(top: 5),
