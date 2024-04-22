@@ -7,6 +7,7 @@ import 'package:musica/components/drawerHeader.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
+import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class home extends StatelessWidget {
@@ -98,7 +99,8 @@ class home extends StatelessWidget {
                     size:26
                   ),
                   onTap: () {
-                    controller.playSong(snapshot.data![index].uri,index);
+                    Get.to(()=>const mPlayer());
+                    //controller.playSong(snapshot.data![index].uri,index);
                   },
                 ),
               )
