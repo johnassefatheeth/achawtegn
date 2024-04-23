@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/instance_manager.dart';
 import 'package:musica/components/Drawerlist.dart';
+import 'package:musica/components/custappBar.dart';
 import 'package:musica/components/drawerHeader.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
@@ -18,17 +19,7 @@ class home extends StatelessWidget {
     var controller=Get.put(playerController());
     return Scaffold(
       backgroundColor: bgdarkcolor,
-      appBar: AppBar(
-        backgroundColor: bgdarkcolor,
-        iconTheme:const IconThemeData(color: Colors.white),
-         actions: [
-          IconButton(onPressed:(){}, icon:const Icon(Icons.search ,color: whitecolor,))
-        ],
-        title:Text(
-          "musica",
-          style: Ourstyle(),
-        ),
-      ),
+      appBar: customAppBar( hasAction: true, pagetitle: "music"),
       drawer: Drawer(
         child: SingleChildScrollView(
           child:Container(
@@ -99,8 +90,8 @@ class home extends StatelessWidget {
                     size:26
                   ),
                   onTap: () {
-                    Get.to(()=>const mPlayer());
-                    //controller.playSong(snapshot.data![index].uri,index);
+                    Get.to(()=> mPlayer(data: snapshot.data![index],));
+                    controller.playSong(snapshot.data![index].uri,index);
                   },
                 ),
               )

@@ -14,9 +14,7 @@ class _DrawerListState extends State<DrawerList> {
       padding:const EdgeInsets.only(top: 15),
       child: Column(
         children: [
-          menuItem("myprofile", Icons.dashboard_outlined),
-          menuItem("mycities", Icons.location_city),
-          menuItem("mylocation", Icons.location_on),
+          menuItem("myprofile", Icons.person),
           menuItem("settings", Icons.settings),
           menuItem("rate", Icons.rate_review),
           menuItem("FaQ", Icons.format_quote)

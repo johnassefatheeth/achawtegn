@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:musica/pages/home.dart';
+import 'package:musica/pages/profile.dart';
+import 'package:musica/pages/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +21,16 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
-      home:const home()
+      home:const home(),
+      routes: {
+        '/home':(context) => const home(),
+        '/myprofile':(context) => const profile(),
+        '/settings':(context) => const settings(),
+        // '/rate':(context) => const Rate(),
+        // '/FaQ':(context) => const FaQ(),
+        // '/details':(context) => const Details()
+
+      },
     );
   }
 }

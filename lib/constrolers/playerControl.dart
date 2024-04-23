@@ -13,12 +13,27 @@ class playerController extends GetxController{
   var playIndex=0.obs;
   var isPLaying=false.obs;
 
+
+  var duration=''.obs;
+   var position=''.obs;
+
     @override
     void onInit(){
       super.onInit();
 
       checkPermission();
     }
+
+
+updatePostion(){
+  audioPlayer.durationStream.listen((d) {
+    duration.value=d.toString().split(".")[0];
+  });
+  audioPlayer.positionStream.listen((p) { 
+    position.value=p.toString().split(".")[0];
+  });
+
+}
 
 
 playSong(String? uri,index){
@@ -29,6 +44,7 @@ playSong(String? uri,index){
   );
   audioPlayer.play();
   isPLaying.value=true;
+  updatePostion();
   }
   on Exception catch (e){
     print(e.toString());
