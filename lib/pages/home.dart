@@ -65,9 +65,15 @@ class home extends StatelessWidget {
                   ),
                   tileColor: bgcolor,
                   title: Text(snapshot.data![index].displayNameWOExt,
+                  textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                   style: Ourstyle(),
                   ),
                   subtitle:Text( "${snapshot.data![index].artist}",
+                  textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                   style: Ourstyle(),
                   ),
                   leading:QueryArtworkWidget(
@@ -90,7 +96,7 @@ class home extends StatelessWidget {
                     size:26
                   ),
                   onTap: () {
-                    Get.to(()=> mPlayer(data: snapshot.data![index],));
+                    Get.to(()=> mPlayer(data: snapshot.data!,));
                     controller.playSong(snapshot.data![index].uri,index);
                   },
                 ),
