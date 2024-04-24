@@ -59,7 +59,7 @@ class Home extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Text('no Songs found', style: Ourstyle());
+                        return Center(child: Text('no Songs found', style: Ourstyle()));
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -128,7 +128,7 @@ class Home extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Text('No Playlists Found', style: Ourstyle());
+                        return Center(child: Text('No Playlists Found', style: Ourstyle()));
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -192,7 +192,7 @@ class Home extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Text('No Playlists Found', style: Ourstyle());
+                        return Center(child: Text('No Playlists Found', style: Ourstyle()));
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -256,7 +256,7 @@ class Home extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Text('No Playlists Found', style: Ourstyle());
+                        return Center(child: Text('No Playlists Found', style: Ourstyle()));
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
