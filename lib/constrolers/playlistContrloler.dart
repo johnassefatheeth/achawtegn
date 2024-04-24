@@ -7,4 +7,11 @@ class playListcontroller{
   return songsFromPlaylist;
 }
 
+
+Future<List<dynamic>> searchSong({required String songName}) async {
+  final searchedsongs = await OnAudioQuery().queryWithFilters(songName,WithFiltersType.AUDIOS );
+  return searchedsongs;
+}
+
+
 }

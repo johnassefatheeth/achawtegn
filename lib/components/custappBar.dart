@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:musica/const/colors.dart';
+import 'package:musica/pages/searchedSong.dart';
 
 AppBar customAppBar({
   String pagetitle = "",
@@ -36,6 +38,9 @@ AppBar customAppBar({
                       onSubmitted: (String value) { // Specify the type parameter as String
                         // Handle search query submitted
                         // You can use the 'value' parameter here
+                        
+                        Get.to(() =>SearchedSongPage(songName:value));
+                        // var searchedsongs = ;
                       },
                     ),
                   ),
