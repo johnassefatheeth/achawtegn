@@ -6,6 +6,7 @@ import 'package:musica/components/drawerHeader.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
+import 'package:musica/pages/musicList.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -39,7 +40,7 @@ class Home extends StatelessWidget {
                 Tab(text: "songs"),
                 Tab(text: "playlist"),
                 Tab(text: "album"),
-                Tab(text: "favorites"),
+                Tab(text: "artists"),
               ],
             ),
             Expanded(
@@ -144,7 +145,7 @@ class Home extends StatelessWidget {
                                   ),
                                   tileColor: bgcolor,
                                   title: Text(
-                                    playlist.playlist!,
+                                    playlist.playlist,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                     style: Ourstyle(),
@@ -168,10 +169,10 @@ class Home extends StatelessWidget {
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
                                       AudiosFromType.PLAYLIST,
-                                      playlist.id!,
+                                      playlist.id,
                                     );
                                     // Navigate to a screen displaying playlist songs (replace with your navigation logic)
-                                    // Get.to(() => PlaylistSongs(songs: songs));
+                                    Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.playlist));
                                   },
                                 ),
                               );
@@ -208,7 +209,7 @@ class Home extends StatelessWidget {
                                   ),
                                   tileColor: bgcolor,
                                   title: Text(
-                                    playlist.album!,
+                                    playlist.album,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                     style: Ourstyle(),
@@ -231,11 +232,11 @@ class Home extends StatelessWidget {
                                   trailing: const Icon(Icons.chevron_right, color: whitecolor),
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
-                                      AudiosFromType.PLAYLIST,
-                                      playlist.id!,
+                                      AudiosFromType.ALBUM_ID,
+                                      playlist.id,
                                     );
                                     // Navigate to a screen displaying playlist songs (replace with your navigation logic)
-                                    // Get.to(() => PlaylistSongs(songs: songs));
+                                    Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.album));
                                   },
                                 ),
                               );
@@ -245,10 +246,69 @@ class Home extends StatelessWidget {
                       }
                     },
                   ),
-                  Container(
-                    child: Center(
-                      child: Text('4th Tab'),
+                  FutureBuilder<List<ArtistModel>>(
+                    future: controller.audioQuery.queryArtists(
+                      ignoreCase: true,
                     ),
+                    builder: (BuildContext context, snapshot) {
+                      if (snapshot.data == null) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.data!.isEmpty) {
+                        return Text('No Playlists Found', style: Ourstyle());
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context, index) {
+                              final playlist = snapshot.data![index];
+                              return Container(
+                                margin: const EdgeInsets.only(top: 5),
+                                child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  tileColor: bgcolor,
+                                  title: Text(
+                                    playlist.artist,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: Ourstyle(),
+                                  ),
+                                  subtitle: Text(
+                                    playlist.numberOfTracks.toString() , // Handle playlists without artist
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: Ourstyle(),
+                                  ),
+                                  leading: QueryArtworkWidget(
+                                    id: snapshot.data![index].id, 
+                                    type: ArtworkType.AUDIO,
+                                    nullArtworkWidget: const Icon(
+                                      Icons.music_note,
+                                      color: whitecolor,
+                                      size:32
+                                    ),
+                                    ),
+                                  trailing: const Icon(Icons.chevron_right, color: whitecolor),
+                                  onTap: () async {
+                                    final songs = await controller.audioQuery.queryAudiosFrom(
+                                      AudiosFromType.ARTIST_ID,
+                                      playlist.id,
+                                    );
+                                    // Navigate to a screen displaying playlist songs (replace with your navigation logic)
+                                    Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.artist));
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ],
               ),
