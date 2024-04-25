@@ -20,27 +20,11 @@ class _logInPageState extends State<logInPage> {
   final passwordController = TextEditingController();
 
 
-  void wrongEmailMessage(){
+  void EMessage(String e){
     showDialog(
       context: context,
        builder: (context){
-        return AlertDialog(title:Text("incorrect email") ,);
-       });
-  }
-
-void UnknownErrorOccured(){
-    showDialog(
-      context: context,
-       builder: (context){
-        return const AlertDialog(title:Text("unknown error occured") ,);
-       });
-  }
-
-void WrongpasswordMessage(){
-    showDialog(
-      context: context,
-       builder: (context){
-        return const AlertDialog(title:Text("incorrect password") ,);
+        return AlertDialog(title:Text(e));
        });
   }
 
@@ -59,19 +43,10 @@ void WrongpasswordMessage(){
         password: passwordController.text);
         Navigator.pop(context);
         Get.to(() => Home());
-      }on FirebaseAuthException catch(e){
-        if(e.code=="user-not-found"){
+      }catch(e){
+        
           Navigator.pop(context);
-          wrongEmailMessage();
-        }
-        else if(e.code=="wrong-password"){
-          Navigator.pop(context);
-          WrongpasswordMessage();
-        }
-        else{
-          Navigator.pop(context);
-          UnknownErrorOccured();
-        }
+          EMessage(e.toString());
       }
         
 

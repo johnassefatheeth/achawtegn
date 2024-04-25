@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:musica/components/button.dart';
 import 'package:musica/components/textInput.dart';
+import 'package:musica/pages/auth/logInpage.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key? key}) : super(key: key);
@@ -20,7 +22,7 @@ class _SignInPageState extends State<SignInPage> {
     showDialog(
       context: context,
        builder: (context){
-        return AlertDialog(title:Text(e) ,);
+        return AlertDialog(title:Text(e));
        });
   }
 
@@ -42,11 +44,12 @@ class _SignInPageState extends State<SignInPage> {
           email: emailController.text, 
           password: passwordController.text);
         Navigator.pop(context);
+        Get.to(logInPage());
 
-      }on FirebaseAuthException catch(e){
+      } catch(e){
         
           Navigator.pop(context);
-          EMessage(e.code);
+          EMessage(e.toString());
         
       }
         
@@ -81,7 +84,7 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(height: 10,),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, "/login");
+                  Get.to(logInPage());
                 },
                 child: const Text("don't have an account?log in")
                 

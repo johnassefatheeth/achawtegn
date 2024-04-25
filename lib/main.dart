@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:musica/pages/UI/splashScreen.dart';
 import 'package:musica/pages/auth/logInpage.dart';
 import 'package:musica/pages/auth/signinPage.dart';
 import 'package:musica/pages/home.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
-      home:const Home(),
+      home:const Splash(),
       routes: {
         '/home':(context) => const Home(),
         '/myprofile':(context) =>  profile(),
