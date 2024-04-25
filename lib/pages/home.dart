@@ -4,6 +4,7 @@ import 'package:musica/components/Drawerlist.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/components/drawerHeader.dart';
 import 'package:musica/const/colors.dart';
+import 'package:musica/const/icon.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/musicList.dart';
@@ -35,7 +36,7 @@ class Home extends StatelessWidget {
         ),
         body: Column(
           children: [
-            TabBar(
+            const TabBar(
               tabs: [
                 Tab(text: "songs"),
                 Tab(text: "playlist"),
@@ -74,26 +75,12 @@ class Home extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   tileColor: bgcolor,
-                                  title: Text(
-                                    snapshot.data![index].displayNameWOExt,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                    style: Ourstyle(),
-                                  ),
-                                  subtitle: Text(
-                                    "${snapshot.data![index].artist}",
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: Ourstyle(),
-                                  ),
+                                  title:Names(mxln: 2, text: snapshot.data![index].displayNameWOExt),
+                                  subtitle:Names(mxln: 1, text: "${snapshot.data![index].artist}") ,
                                   leading:QueryArtworkWidget(
                                       id: snapshot.data![index].id, 
                                       type: ArtworkType.AUDIO,
-                                      nullArtworkWidget: const Icon(
-                                        Icons.music_note,
-                                        color: whitecolor,
-                                        size:32
-                                      ),
+                                      nullArtworkWidget: musicIcon(),
                                       ),
                                   trailing: controller.playIndex.value == index && controller.isPLaying.value
                                       ? const Icon(
@@ -144,26 +131,12 @@ class Home extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   tileColor: bgcolor,
-                                  title: Text(
-                                    playlist.playlist,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                    style: Ourstyle(),
-                                  ),
-                                  subtitle: Text(
-                                    playlist.numOfSongs.toString() , 
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: Ourstyle(),
-                                  ),
+                                  title:Names(mxln: 2, text: playlist.playlist),
+                                  subtitle:Names(mxln: 1, text: playlist.numOfSongs.toString()) ,
                                   leading: QueryArtworkWidget(
                                     id: snapshot.data![index].id, 
                                     type: ArtworkType.AUDIO,
-                                    nullArtworkWidget: const Icon(
-                                      Icons.music_note,
-                                      color: whitecolor,
-                                      size:32
-                                    ),
+                                    nullArtworkWidget: musicIcon(),
                                     ),
                                   trailing: const Icon(Icons.chevron_right, color: whitecolor),
                                   onTap: () async {
@@ -207,26 +180,12 @@ class Home extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   tileColor: bgcolor,
-                                  title: Text(
-                                    album.album,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                    style: Ourstyle(),
-                                  ),
-                                  subtitle: Text(
-                                    album.numOfSongs.toString() , 
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: Ourstyle(),
-                                  ),
+                                  title: Names(mxln:2,text:album.album),
+                                  subtitle:Names(mxln:1,text:album.numOfSongs.toString()) ,
                                   leading: QueryArtworkWidget(
                                     id: snapshot.data![index].id, 
                                     type: ArtworkType.AUDIO,
-                                    nullArtworkWidget: const Icon(
-                                      Icons.music_note,
-                                      color: whitecolor,
-                                      size:32
-                                    ),
+                                    nullArtworkWidget: musicIcon(),
                                     ),
                                   trailing: const Icon(Icons.chevron_right, color: whitecolor),
                                   onTap: () async {
@@ -270,26 +229,12 @@ class Home extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   tileColor: bgcolor,
-                                  title: Text(
-                                    artist.artist,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                    style: Ourstyle(),
-                                  ),
-                                  subtitle: Text(
-                                    artist.numberOfTracks.toString() , 
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: Ourstyle(),
-                                  ),
+                                  title:Names(mxln:2,text:artist.artist) ,
+                                  subtitle:Names(mxln:1,text:artist.numberOfTracks.toString()) ,
                                   leading: QueryArtworkWidget(
                                     id: snapshot.data![index].id, 
                                     type: ArtworkType.AUDIO,
-                                    nullArtworkWidget: const Icon(
-                                      Icons.music_note,
-                                      color: whitecolor,
-                                      size:32
-                                    ),
+                                    nullArtworkWidget: musicIcon(),
                                     ),
                                   trailing: const Icon(Icons.chevron_right, color: whitecolor),
                                   onTap: () async {
