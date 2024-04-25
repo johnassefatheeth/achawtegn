@@ -4,14 +4,14 @@ import 'package:musica/components/button.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/const/colors.dart';
 
-class logInPage extends StatefulWidget {
-  logInPage({Key? key}) : super(key: key);
+class SignInPage extends StatefulWidget {
+  SignInPage({Key? key}) : super(key: key);
 
   @override
-  State<logInPage> createState() => _logInPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _logInPageState extends State<logInPage> {
+class _SignInPageState extends State<SignInPage> {
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
@@ -37,13 +37,13 @@ void WrongpasswordMessage(){
 
   void signIn() async {
 
-    showDialog(context:context , 
-    builder: (context){
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
-    );
+    // showDialog(context:context , 
+    // builder: (context){
+    //   return const Center(
+    //     child: CircularProgressIndicator(),
+    //   );
+    // }
+    // );
       try{
         await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, 
@@ -77,7 +77,7 @@ void WrongpasswordMessage(){
                 size: 100,
               ),
               const SizedBox(height: 20),
-              const Text("wana log in?"),
+              const Text("wana sign up?"),
               textfield(
                 controller: emailController,
                 obsecureText: false,

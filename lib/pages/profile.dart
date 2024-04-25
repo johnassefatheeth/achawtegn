@@ -1,15 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
 
 class profile extends StatelessWidget {
 
-
   final String displayName="john";
-  final String email="jogndoe@gmail.com";
-  final bool isLoggedIn=false;
+  final String email=FirebaseAuth.instance.currentUser!.email.toString();
+  final bool isLoggedIn=true;
 
-  const profile({super.key});
+   profile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,12 @@ class profile extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                   },
-                  child: const Text('Log Out'),
+                  child: GestureDetector
+                  (
+                    onTap: (){
+                      FirebaseAuth.instance.signOut();
+                    },
+                    child: const Text('Log Out')),
                 ),
                 ElevatedButton(
                   onPressed: () {

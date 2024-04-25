@@ -39,6 +39,8 @@ dependencies:
   just_audio: ^0.9.37
   on_audio_query: ^2.9.0
   permission_handler: ^11.3.1
+  firebase_core: ^2.30.1
+  firebase_auth: ^4.19.4
 
 dev_dependencies:
   flutter_test:
