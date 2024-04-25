@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:musica/pages/auth/logInpage.dart';
 import 'package:musica/pages/home.dart';
 import 'package:musica/pages/profile.dart';
 import 'package:musica/pages/settings.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
-      home:const Home(),
+      home:const logInPage(),
       routes: {
         '/home':(context) => const Home(),
         '/myprofile':(context) => const profile(),
