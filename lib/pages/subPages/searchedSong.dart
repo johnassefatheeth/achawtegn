@@ -8,7 +8,7 @@ import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-import '../const/listTextStyle.dart';
+import '../../const/listTextStyle.dart';
 
 class SearchedSongPage extends StatelessWidget {
   final String songName;

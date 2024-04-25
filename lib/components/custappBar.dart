@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/const/colors.dart';
-import 'package:musica/pages/searchedSong.dart';
+import 'package:musica/pages/subPages/searchedSong.dart';
 
 AppBar customAppBar({
   String pagetitle = "",

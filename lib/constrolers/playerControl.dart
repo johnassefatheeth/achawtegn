@@ -59,7 +59,6 @@ playSong(String? uri,index){
   }
 }
 
-
     checkPermission()async{
       var perm = await Permission.storage.request();
       if(perm.isGranted);

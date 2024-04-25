@@ -129,7 +129,7 @@ class mPlayer extends StatelessWidget {
                                 ),
                         ),
                         IconButton(onPressed: (){
-                                                    controller.playSong(data[controller.playIndex.value].uri, controller.playIndex.value+1);
+                                    controller.playSong(data[controller.playIndex.value].uri, controller.playIndex.value+1);
                 
                         }, icon: const Icon(Icons.skip_next_rounded,size: 40))
                       ],

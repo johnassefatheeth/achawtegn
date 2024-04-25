@@ -7,7 +7,7 @@ import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/components/textsty.dart';
 import 'package:musica/constrolers/playerControl.dart';
-import 'package:musica/pages/musicList.dart';
+import 'package:musica/pages/subPages/musicList.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -91,8 +91,8 @@ class Home extends StatelessWidget {
                                     size: 26,
                                   )
                                       : const Icon(
-                                    Icons.music_note_outlined,
-                                    color: Colors.transparent,
+                                    Icons.menu,
+                                    color: whitecolor,
                                     size: 26,
                                   ),
                                   onTap: () {
