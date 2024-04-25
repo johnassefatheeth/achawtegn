@@ -22,49 +22,44 @@ class profile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 60,
-                // Replace with actual profile picture
                 backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQubUz3YKP7UQO_YFz5IQ1J4ou7sbDXAoy-40_eHoRTdA&s'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 displayName,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 email,
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: const TextStyle(fontSize: 16, color: Colors.grey),
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               if (isLoggedIn)
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement edit profile functionality
                   },
-                  child: Text('Edit Profile'),
+                  child: const Text('Edit Profile'),
                 )
               else
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement sign in functionality
                   },
-                  child: Text('Sign In'),
+                  child: const Text('Sign In'),
                 ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               if (isLoggedIn)
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement log out functionality
                   },
-                  child: Text('Log Out'),
+                  child: const Text('Log Out'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement log out functionality
                   },
-                  child: Text('Cloud'),
+                  child: const Text('Cloud'),
                 ),
             ],
           ),
