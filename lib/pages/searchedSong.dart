@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
-import 'package:musica/const/listTextStyle.dart';
+import 'package:musica/components/textsty.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+
+import '../const/listTextStyle.dart';
 
 class SearchedSongPage extends StatelessWidget {
   final String songName;
@@ -55,8 +56,8 @@ class SearchedSongPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   tileColor: bgcolor,
-                                  title:Names(mxln: 2, text: snapshot.data![index].displayNameWOExt),
-                                  subtitle:Names(mxln: 1, text: "${snapshot.data![index].artist}") ,
+                                  title:Namess(mxln: 2, text: snapshot.data![index].displayNameWOExt),
+                                  subtitle:Namess(mxln: 1, text: "${snapshot.data![index].artist}") ,
                                   leading:QueryArtworkWidget(
                                       id: snapshot.data![index].id, 
                                       type: ArtworkType.AUDIO,

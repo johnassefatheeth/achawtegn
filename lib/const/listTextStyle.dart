@@ -6,3 +6,4 @@ TextStyle Ourstyle({Color color = Colors.white, double size = 14.0}) {
     color: color,
   );
 }
+

@@ -1,57 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:musica/components/button.dart';
+import 'package:musica/components/textInput.dart';
 import 'package:musica/const/colors.dart';
 
 class logInPage extends StatelessWidget {
-  const logInPage({super.key});
+  logInPage({Key? key}) : super(key: key);
+
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void signIn() {}
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.air,
-            size: 100,),
-            SizedBox(height: 50),
-            Text("wana sign up?"),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: whitecolor
-                    )
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey
-                    )
-                  )
-                ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.air,
+                size: 100,
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: bgdarkcolor
-                    )
-                  ),
-                  fillColor: Color.fromARGB(179, 127, 121, 121),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey
-                    )
-                  )
-                ),
+              const SizedBox(height: 20),
+              const Text("wana sign up?"),
+              textfield(
+                controller: usernameController,
+                obsecureText: false,
+                hintText: "username",
               ),
-            ),
-          ],
-
+              textfield(
+                controller: passwordController,
+                obsecureText: true,
+                hintText: "your password",
+              ),
+              const Text("forgot password?"),
+              const SizedBox(height: 15),
+              Inputbutton(
+                onTap: signIn,
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  Image.asset('lib/images/goog.png'),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

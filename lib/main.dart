@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
-      home:const logInPage(),
+      home:logInPage(),
       routes: {
         '/home':(context) => const Home(),
         '/myprofile':(context) => const profile(),
