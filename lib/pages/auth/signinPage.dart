@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:musica/components/button.dart';
 import 'package:musica/components/textInput.dart';
-import 'package:musica/const/colors.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key? key}) : super(key: key);
@@ -17,47 +16,38 @@ class _SignInPageState extends State<SignInPage> {
   final passwordController = TextEditingController();
 
 
-  void wrongEmailMessage(){
+  void EMessage(String e){
     showDialog(
       context: context,
        builder: (context){
-        return AlertDialog(title:Text("incorrect email") ,);
+        return AlertDialog(title:Text(e) ,);
        });
   }
 
 
 
-void WrongpasswordMessage(){
-    showDialog(
-      context: context,
-       builder: (context){
-        return const AlertDialog(title:Text("incorrect password") ,);
-       });
-  }
 
-  void signIn() async {
 
-    // showDialog(context:context , 
-    // builder: (context){
-    //   return const Center(
-    //     child: CircularProgressIndicator(),
-    //   );
-    // }
-    // );
+  void signup() async {
+
+    showDialog(context:context , 
+    builder: (context){
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    );
       try{
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, 
-        password: passwordController.text);
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text, 
+          password: passwordController.text);
         Navigator.pop(context);
+
       }on FirebaseAuthException catch(e){
-        if(e.code=="user-not-found"){
+        
           Navigator.pop(context);
-          wrongEmailMessage();
-        }
-        else if(e.code=="wrong-password"){
-          Navigator.pop(context);
-          WrongpasswordMessage();
-        }
+          EMessage(e.code);
+        
       }
         
 
@@ -81,19 +71,25 @@ void WrongpasswordMessage(){
               textfield(
                 controller: emailController,
                 obsecureText: false,
-                hintText: "username",
+                hintText: "email",
               ),
               textfield(
                 controller: passwordController,
                 obsecureText: true,
-                hintText: "your password",
+                hintText: "password",
               ),
-              const Text("forgot password?"),
               const SizedBox(height: 10,),
-              const Text("don't have an account?sign up"),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, "/login");
+                },
+                child: const Text("don't have an account?log in")
+                
+                ),
               const SizedBox(height: 15),
               Inputbutton(
-                onTap: signIn,
+                onTap: signup,
+                btnName:"sign in"
               ),
               SizedBox(height: 10),
               Row(

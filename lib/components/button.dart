@@ -5,7 +5,8 @@ class Inputbutton extends StatelessWidget {
 
 
   final Function()? onTap;
- Inputbutton({super.key, required this.onTap});
+  final String btnName;
+ Inputbutton({super.key, required this.onTap, required this.btnName});
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
@@ -18,7 +19,7 @@ class Inputbutton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            "sign in",
+            btnName,
             style: Ourstyle(),
           ),
         ),

@@ -1,15 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
+import 'package:musica/pages/auth/logInpage.dart';
+import 'package:musica/pages/auth/signinPage.dart';
 
-class profile extends StatelessWidget {
+class profile extends StatefulWidget {
 
-  final String displayName="john";
-  final String email=FirebaseAuth.instance.currentUser!.email.toString();
-  final bool isLoggedIn=true;
 
    profile({super.key});
+
+  @override
+  State<profile> createState() => _profileState();
+}
+
+class _profileState extends State<profile> {
+  final String displayName="john";
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +39,33 @@ class profile extends StatelessWidget {
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
-              Text(
-                email,
+              const Text(
+                "FirebaseAuth.instance.currentUser!.email.toString()",
                 style: const TextStyle(fontSize: 16, color: Colors.grey),
               ),
               const SizedBox(height: 32),
-              if (isLoggedIn)
+              if (FirebaseAuth.instance.currentUser!=null)
                 ElevatedButton(
                   onPressed: () {
                   },
                   child: const Text('Edit Profile'),
-                )
-              else
+                ),
+              if (FirebaseAuth.instance.currentUser==null)
                 ElevatedButton(
                   onPressed: () {
+                    Get.to(SignInPage());
                   },
                   child: const Text('Sign In'),
                 ),
+                if (FirebaseAuth.instance.currentUser==null)
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(logInPage());
+                  },
+                  child: const Text('log In'),
+                ),
               const SizedBox(height: 16),
-              if (isLoggedIn)
+              if (FirebaseAuth.instance.currentUser!=null)
                 ElevatedButton(
                   onPressed: () {
                   },
@@ -58,9 +73,11 @@ class profile extends StatelessWidget {
                   (
                     onTap: (){
                       FirebaseAuth.instance.signOut();
+                      Navigator.pushNamed(context, "/login");
                     },
                     child: const Text('Log Out')),
                 ),
+                if (FirebaseAuth.instance.currentUser!=null)
                 ElevatedButton(
                   onPressed: () {
                   },

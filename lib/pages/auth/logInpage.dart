@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:musica/components/button.dart';
 import 'package:musica/components/textInput.dart';
-import 'package:musica/const/colors.dart';
-
+import 'package:musica/pages/auth/signinPage.dart';
+import 'package:musica/pages/home.dart';
 class logInPage extends StatefulWidget {
   logInPage({Key? key}) : super(key: key);
 
@@ -25,7 +28,13 @@ class _logInPageState extends State<logInPage> {
        });
   }
 
-
+void UnknownErrorOccured(){
+    showDialog(
+      context: context,
+       builder: (context){
+        return const AlertDialog(title:Text("unknown error occured") ,);
+       });
+  }
 
 void WrongpasswordMessage(){
     showDialog(
@@ -49,6 +58,7 @@ void WrongpasswordMessage(){
         email: emailController.text, 
         password: passwordController.text);
         Navigator.pop(context);
+        Get.to(() => Home());
       }on FirebaseAuthException catch(e){
         if(e.code=="user-not-found"){
           Navigator.pop(context);
@@ -57,6 +67,10 @@ void WrongpasswordMessage(){
         else if(e.code=="wrong-password"){
           Navigator.pop(context);
           WrongpasswordMessage();
+        }
+        else{
+          Navigator.pop(context);
+          UnknownErrorOccured();
         }
       }
         
@@ -81,7 +95,7 @@ void WrongpasswordMessage(){
               textfield(
                 controller: emailController,
                 obsecureText: false,
-                hintText: "username",
+                hintText: "email",
               ),
               textfield(
                 controller: passwordController,
@@ -90,10 +104,17 @@ void WrongpasswordMessage(){
               ),
               const Text("forgot password?"),
               const SizedBox(height: 10,),
-              const Text("don't have an account?sign up"),
+              GestureDetector(
+                onTap: (){
+                  Get.to(() => SignInPage());
+                },
+                child: const Text("don't have an account?sign up")
+                
+                ),
               const SizedBox(height: 15),
               Inputbutton(
                 onTap: signIn,
+                btnName:"log in"
               ),
               SizedBox(height: 10),
               Row(
@@ -104,6 +125,14 @@ void WrongpasswordMessage(){
                   height: 80,),
                   Image.asset('lib/images/appl.png',
                   height: 60,),
+                  GestureDetector(
+                    onTap: (){
+                      Get.to(() => Home());
+                    },
+                    child: Text(
+                      "log in as guest"
+                    ),
+                  )
                 ],
               ),
             ],
