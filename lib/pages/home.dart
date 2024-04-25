@@ -151,7 +151,7 @@ class Home extends StatelessWidget {
                                     style: Ourstyle(),
                                   ),
                                   subtitle: Text(
-                                    playlist.numOfSongs.toString() , // Handle playlists without artist
+                                    playlist.numOfSongs.toString() , 
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     style: Ourstyle(),
@@ -171,7 +171,6 @@ class Home extends StatelessWidget {
                                       AudiosFromType.PLAYLIST,
                                       playlist.id,
                                     );
-                                    // Navigate to a screen displaying playlist songs (replace with your navigation logic)
                                     Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.playlist));
                                   },
                                 ),
@@ -192,7 +191,7 @@ class Home extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Center(child: Text('No Playlists Found', style: Ourstyle()));
+                        return Center(child: Text('No Albums Found', style: Ourstyle()));
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -200,7 +199,7 @@ class Home extends StatelessWidget {
                             physics: const BouncingScrollPhysics(),
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
-                              final playlist = snapshot.data![index];
+                              final album = snapshot.data![index];
                               return Container(
                                 margin: const EdgeInsets.only(top: 5),
                                 child: ListTile(
@@ -209,13 +208,13 @@ class Home extends StatelessWidget {
                                   ),
                                   tileColor: bgcolor,
                                   title: Text(
-                                    playlist.album,
+                                    album.album,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                     style: Ourstyle(),
                                   ),
                                   subtitle: Text(
-                                    playlist.numOfSongs.toString() , // Handle playlists without artist
+                                    album.numOfSongs.toString() , 
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     style: Ourstyle(),
@@ -233,10 +232,9 @@ class Home extends StatelessWidget {
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
                                       AudiosFromType.ALBUM_ID,
-                                      playlist.id,
+                                      album.id,
                                     );
-                                    // Navigate to a screen displaying playlist songs (replace with your navigation logic)
-                                    Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.album));
+                                    Get.to(() => PlaylistSongs(songs: songs,pageName:album.album));
                                   },
                                 ),
                               );
@@ -256,7 +254,7 @@ class Home extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Center(child: Text('No Playlists Found', style: Ourstyle()));
+                        return Center(child: Text('No Artists Found', style: Ourstyle()));
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -264,7 +262,7 @@ class Home extends StatelessWidget {
                             physics: const BouncingScrollPhysics(),
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
-                              final playlist = snapshot.data![index];
+                              final artist = snapshot.data![index];
                               return Container(
                                 margin: const EdgeInsets.only(top: 5),
                                 child: ListTile(
@@ -273,13 +271,13 @@ class Home extends StatelessWidget {
                                   ),
                                   tileColor: bgcolor,
                                   title: Text(
-                                    playlist.artist,
+                                    artist.artist,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                     style: Ourstyle(),
                                   ),
                                   subtitle: Text(
-                                    playlist.numberOfTracks.toString() , // Handle playlists without artist
+                                    artist.numberOfTracks.toString() , 
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     style: Ourstyle(),
@@ -297,10 +295,9 @@ class Home extends StatelessWidget {
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
                                       AudiosFromType.ARTIST_ID,
-                                      playlist.id,
+                                      artist.id,
                                     );
-                                    // Navigate to a screen displaying playlist songs (replace with your navigation logic)
-                                    Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.artist));
+                                    Get.to(() => PlaylistSongs(songs: songs,pageName:artist.artist));
                                   },
                                 ),
                               );
