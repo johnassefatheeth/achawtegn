@@ -1,6 +1,7 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -44,11 +45,22 @@ updatePostion(){
 }
 
 
-playSong(String? uri,index){
+playSong(SongModel song,index){
   playIndex.value=index;
   try{
   audioPlayer.setAudioSource(
-    AudioSource.uri(Uri.parse(uri!))
+    AudioSource.uri(
+      Uri.parse(song.uri!),
+      tag: MediaItem(
+        // Specify a unique ID for each media item:
+        id: song.id.toString(),
+        // Metadata to display in the notification:
+        album: song.album,
+        title: song.displayNameWOExt,
+        artUri: Uri.parse(song.uri!),
+  ),
+      
+      )
   );
   audioPlayer.play();
   isPLaying.value=true;

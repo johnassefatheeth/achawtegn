@@ -139,7 +139,7 @@ class PlaylistSongs extends StatelessWidget {
                                       ),
                 onTap: () {
                     Get.to(() => mPlayer(data: songs));
-                    controller.playSong(songs[index].uri, index);
+                    controller.playSong(songs[index], index);
                 },
               ),
             );
