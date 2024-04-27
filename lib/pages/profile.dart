@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
-import 'package:musica/const/colors.dart';
 import 'package:musica/pages/auth/logInpage.dart';
 import 'package:musica/pages/auth/signinPage.dart';
 
@@ -36,12 +35,12 @@ class _profileState extends State<profile> {
               const SizedBox(height: 16),
               Text(
                 displayName,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 20, fontWeight:FontWeight.bold),
               ),
               const SizedBox(height: 8),
-              const Text(
-                "FirebaseAuth.instance.currentUser!.email.toString()",
-                style: const TextStyle(fontSize: 16, color: Colors.grey),
+               Text(
+                (FirebaseAuth.instance.currentUser==null)?"":FirebaseAuth.instance.currentUser!.email.toString(),
+                style: const TextStyle(fontSize: 16, ),
               ),
               const SizedBox(height: 32),
               if (FirebaseAuth.instance.currentUser!=null)
@@ -49,7 +48,7 @@ class _profileState extends State<profile> {
                   onPressed: () {
                   },
                   child: Text('Edit Profile',style: TextStyle(
-                    color: whitecolor
+                    color: Theme.of(context).colorScheme.primary
                   ),),
                 ),
               if (FirebaseAuth.instance.currentUser==null)
@@ -57,7 +56,7 @@ class _profileState extends State<profile> {
                   onPressed: () {
                     Get.to(SignInPage());
                   },
-                  child: const Text('Sign In'),
+                  child: Text('Sign In'),
                 ),
                 if (FirebaseAuth.instance.currentUser==null)
                 ElevatedButton(
@@ -78,7 +77,6 @@ class _profileState extends State<profile> {
                       Navigator.pushNamed(context, "/login");
                     },
                     child: Text('Log Out',style:TextStyle(
-                    color: whitecolor
                   ))),
                 ),
                 if (FirebaseAuth.instance.currentUser!=null)
@@ -86,7 +84,6 @@ class _profileState extends State<profile> {
                   onPressed: () {
                   },
                   child: Text('Cloud',style:TextStyle(
-                    color: whitecolor
                   )),
                 ),
             ],

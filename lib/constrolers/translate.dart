@@ -9,7 +9,7 @@ class Translate extends Translations{
       'settings': 'settings',
       'language':'language',
       'Dark Mode': 'Dark Mode',
-      'myprofile':'my profile',
+      'myprofile':'myprofile',
       'rate': 'rate',
       'music':'music',
       'songs': 'songs',

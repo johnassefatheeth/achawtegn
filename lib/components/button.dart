@@ -15,7 +15,7 @@ class Inputbutton extends StatelessWidget {
         height: 60,
         width: 100,
         decoration: BoxDecoration(
-          color: Colors.black
+          color: Colors.blue
         ),
         child: Center(
           child: Text(

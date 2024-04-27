@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:musica/components/button.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/pages/auth/signinPage.dart';
@@ -28,7 +26,7 @@ class _logInPageState extends State<logInPage> {
        });
   }
 
-  void signIn() async {
+  void logIn() async {
 
     showDialog(context:context , 
     builder: (context){
@@ -60,9 +58,9 @@ class _logInPageState extends State<logInPage> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: [SizedBox(height: 20,),
               const Icon(
-                Icons.air,
+                Icons.login,
                 size: 100,
               ),
               const SizedBox(height: 20),
@@ -88,24 +86,19 @@ class _logInPageState extends State<logInPage> {
                 ),
               const SizedBox(height: 15),
               Inputbutton(
-                onTap: signIn,
+                onTap: logIn,
                 btnName:"log in"
               ),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  
-                  Image.asset('lib/images/goog.png',
-                  height: 80,),
-                  Image.asset('lib/images/appl.png',
-                  height: 60,),
                   GestureDetector(
                     onTap: (){
                       Get.to(() => Home());
                     },
                     child: Text(
-                      "log in as guest"
+                      "continue in as guest"
                     ),
                   )
                 ],

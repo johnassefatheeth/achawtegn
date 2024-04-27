@@ -60,13 +60,15 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Theme.of(context).colorScheme.tertiary,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 30,),
               const Icon(
-                Icons.air,
+                Icons.person,
                 size: 100,
               ),
               const SizedBox(height: 20),
@@ -99,10 +101,6 @@ class _SignInPageState extends State<SignInPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   
-                  Image.asset('lib/images/goog.png',
-                  height: 80,),
-                  Image.asset('lib/images/appl.png',
-                  height: 60,),
                 ],
               ),
             ],
