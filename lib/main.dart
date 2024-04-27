@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:musica/constrolers/myconstroller.dart';
 import 'package:musica/constrolers/translate.dart';
 import 'package:musica/pages/UI/splashScreen.dart';
 import 'package:musica/pages/auth/logInpage.dart';
@@ -21,7 +20,6 @@ void main()async{
 }
 
 class MyApp extends StatelessWidget {
-  final MygetxController myController=Get.put(MygetxController());
   MyApp({super.key});
   @override
   Widget build(BuildContext context) {

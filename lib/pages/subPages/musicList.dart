@@ -39,13 +39,13 @@ class PlaylistSongs extends StatelessWidget {
                   song.title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
-                  style: TextStyle(color: Colors.white), // Adjust style as needed
+                  style: TextStyle(), // Adjust style as needed
                 ),
                 subtitle: Text(
                   song.artist ?? 'Unknown Artist',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
-                  style: TextStyle(color: Colors.white.withOpacity(0.6)), // Adjust style as needed
+                  style: TextStyle(), // Adjust style as needed
                 ),
                 leading:QueryArtworkWidget(
                                       id: song.id, 
@@ -58,7 +58,6 @@ class PlaylistSongs extends StatelessWidget {
                 trailing: controller.playIndex.value == index && controller.isPLaying.value
                                       ? const Icon(
                                     Icons.play_arrow,
-                                    color: whitecolor,
                                     size: 26,
                                   )
                                       : GestureDetector(
@@ -140,7 +139,6 @@ class PlaylistSongs extends StatelessWidget {
             },
                                         child: const Icon(
                                             Icons.more_vert,
-                                            color: whitecolor,
                                             size: 26,
                                           ),
                                       ),

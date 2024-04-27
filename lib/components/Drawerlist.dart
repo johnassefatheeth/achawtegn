@@ -28,6 +28,11 @@ class _DrawerListState extends State<DrawerList> {
   return Material(
     child: InkWell(
       onTap: () {
+        if(title=='ማስተካከያ')
+        Navigator.pushNamed(context, '/settings');
+        if(title=='የኔ ኣካውንት')
+        Navigator.pushNamed(context, '/myprofile');
+        else
         Navigator.pushNamed(context, '/$title');
 
       },

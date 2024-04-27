@@ -46,8 +46,7 @@ class mPlayer extends StatelessWidget {
                    artworkWidth: double.infinity,
                    nullArtworkWidget: const Icon(
                     Icons.music_note_sharp,
-                    size: 250,
-                    color: whitecolor,),
+                    size: 250,),
                    ),
                 )
                 ),

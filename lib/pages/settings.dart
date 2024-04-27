@@ -21,7 +21,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(pagetitle: "Settings".tr,context: context),
+      appBar: customAppBar(pagetitle: "settings".tr,context: context),
       backgroundColor: Theme.of(context).colorScheme.tertiary,
       body: ListView(
         padding: EdgeInsets.all(16),
@@ -44,9 +44,9 @@ class _SettingsPageState extends State<SettingsPage> {
             trailing: DropdownButton<String>(
               value: Language, // Set initial value here
               onChanged: (String? newValue) {
-                if(Language=='English')
+                if(Language!='English')
                   myController.changelanguage('en','US');
-                else if(Language=='አማርኛ')
+                else 
                   myController.changelanguage('am','ET');
 
                 setState(() {

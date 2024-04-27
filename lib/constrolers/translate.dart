@@ -7,7 +7,7 @@ class Translate extends Translations{
   Map<String, Map<String,String>> get keys=>{
     'en_US':{
       'settings': 'settings',
-      'languages':'languages',
+      'language':'language',
       'Dark Mode': 'Dark Mode',
       'myprofile':'my profile',
       'rate': 'rate',
@@ -15,23 +15,23 @@ class Translate extends Translations{
       'songs': 'songs',
       'playlist':'playlist',
       'album': 'album',
-      'artist':'artist',
+      'artists':'artists',
       'playing': 'playing',
-      'search for a song':'search for a song',
+      'search':'search',
     },
     'am_ET':{
       'settings': 'ማስተካከያ',
-      'languages':'ቋንቋዎች',
-      'dark mode': 'ጨለማ ሞድ',
-      'my profile':'የኔ አካውንት',
+      'language':'ቋንቋዎች',
+      'Dark Mode': 'ጨለማ ሞድ',
+      'myprofile':'የኔ አካውንት',
       'rate': 'አርም',
       'music':'ዜማዎች',
       'songs': 'ነጠላ',
       'playlist':'ዝርዝሮች',
       'album': 'አልበም',
-      'artist':'ዜመኞች',
+      'artists':'ዜመኞች',
       'playing': 'በማጫወት ላይ',
-      'search for a song':'ዜማን ፈልግ',
+      'search':'ፈልግ',
     }
   };
 }
