@@ -21,8 +21,8 @@ class _profileState extends State<profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(pagetitle: "My Profile"),
-      backgroundColor: bgcolor,
+      appBar: customAppBar(pagetitle: "My Profile",context: context),
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
@@ -48,7 +48,9 @@ class _profileState extends State<profile> {
                 ElevatedButton(
                   onPressed: () {
                   },
-                  child: const Text('Edit Profile'),
+                  child: Text('Edit Profile',style: TextStyle(
+                    color: whitecolor
+                  ),),
                 ),
               if (FirebaseAuth.instance.currentUser==null)
                 ElevatedButton(
@@ -75,13 +77,17 @@ class _profileState extends State<profile> {
                       FirebaseAuth.instance.signOut();
                       Navigator.pushNamed(context, "/login");
                     },
-                    child: const Text('Log Out')),
+                    child: Text('Log Out',style:TextStyle(
+                    color: whitecolor
+                  ))),
                 ),
                 if (FirebaseAuth.instance.currentUser!=null)
                 ElevatedButton(
                   onPressed: () {
                   },
-                  child: const Text('Cloud'),
+                  child: Text('Cloud',style:TextStyle(
+                    color: whitecolor
+                  )),
                 ),
             ],
           ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
+import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -18,11 +19,11 @@ class PlaylistSongs extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.put(playerController());
     return Scaffold(
-      backgroundColor: bgcolor,
-      appBar: customAppBar(pagetitle: pageName),
-      body: Padding(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      appBar: customAppBar(pagetitle: pageName ,context: context),
+      body:Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
+        child:songs.isNotEmpty? ListView.builder(
           physics: const BouncingScrollPhysics(),
           itemCount: songs.length,
           itemBuilder: (context, index) {
@@ -33,7 +34,7 @@ class PlaylistSongs extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                tileColor: bgcolor,
+                tileColor: Theme.of(context).colorScheme.tertiary,
                 title: Text(
                   song.title,
                   overflow: TextOverflow.ellipsis,
@@ -51,7 +52,6 @@ class PlaylistSongs extends StatelessWidget {
                                       type: ArtworkType.AUDIO,
                                       nullArtworkWidget: const Icon(
                                         Icons.music_note,
-                                        color: whitecolor,
                                         size:32
                                       ),
                                       ), 
@@ -139,7 +139,7 @@ class PlaylistSongs extends StatelessWidget {
               );
             },
                                         child: const Icon(
-                                            Icons.menu,
+                                            Icons.more_vert,
                                             color: whitecolor,
                                             size: 26,
                                           ),
@@ -151,7 +151,9 @@ class PlaylistSongs extends StatelessWidget {
               ),
             );
           },
-        ),
+        ):Expanded(child: Center(
+          child:Text("no songs in the playlist" ,style: Ourstyle(),)
+        )),
       ),
     );
   }

@@ -22,8 +22,8 @@ class Home extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: bgdarkcolor,
-        appBar: customAppBar(hasAction: true, pagetitle: "music"),
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
+        appBar: customAppBar(hasAction: true, pagetitle: "music",context: context),
         drawer: Drawer(
           child: SingleChildScrollView(
             child: Container(
@@ -38,13 +38,25 @@ class Home extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const TabBar(
-              tabs: [
-                Tab(text: "songs"),
-                Tab(text: "playlist"),
-                Tab(text: "album"),
-                Tab(text: "artists"),
-              ],
+            Container(
+              color: Theme.of(context).colorScheme.tertiary,
+              child: const TabBar(
+                indicatorColor: whitecolor,
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold, 
+                  color: Colors.blue
+                ),
+                unselectedLabelStyle: TextStyle(
+                  fontWeight: FontWeight.normal,
+                ),
+                tabs: [
+                  Tab(text: "songs"),
+                  Tab(text: "playlist"),
+                  Tab(text: "album"),
+                  Tab(text: "artists"),
+                ],
+                dividerColor: Colors.black,
+              ),
             ),
             Expanded(
               child: TabBarView(
@@ -76,8 +88,8 @@ class Home extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  tileColor: bgcolor,
-                                  title:Namess(mxln: 2, text: snapshot.data![index].displayNameWOExt),
+                                  tileColor: Theme.of(context).colorScheme.tertiary,
+                                  title:Namess(mxln: 2, text: snapshot.data![index].displayNameWOExt,IsBold: true),
                                   subtitle:Namess(mxln: 1, text: "${snapshot.data![index].artist}") ,
                                   leading:QueryArtworkWidget(
                                       id: snapshot.data![index].id, 
@@ -87,12 +99,10 @@ class Home extends StatelessWidget {
                                   trailing: controller.playIndex.value == index && controller.isPLaying.value
                                       ? const Icon(
                                     Icons.play_arrow,
-                                    color: whitecolor,
                                     size: 26,
                                   )
                                       : const Icon(
-                                    Icons.menu,
-                                    color: whitecolor,
+                                    Icons.more_vert,
                                     size: 26,
                                   ),
                                   onTap: () {
@@ -132,7 +142,7 @@ class Home extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  tileColor: bgcolor,
+                                  tileColor: Theme.of(context).colorScheme.tertiary,
                                   title:Namess(mxln: 2, text: playlist.playlist),
                                   subtitle:Namess(mxln: 1, text: playlist.numOfSongs.toString()) ,
                                   leading: QueryArtworkWidget(
@@ -140,7 +150,7 @@ class Home extends StatelessWidget {
                                     type: ArtworkType.AUDIO,
                                     nullArtworkWidget: musicIcon(),
                                     ),
-                                  trailing: const Icon(Icons.chevron_right, color: whitecolor),
+                                  trailing: const Icon(Icons.chevron_right),
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
                                       AudiosFromType.PLAYLIST,
@@ -181,7 +191,7 @@ class Home extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  tileColor: bgcolor,
+                                  tileColor: Theme.of(context).colorScheme.tertiary,
                                   title: Namess(mxln:2,text:album.album),
                                   subtitle:Namess(mxln:1,text:album.numOfSongs.toString()) ,
                                   leading: QueryArtworkWidget(
@@ -189,7 +199,7 @@ class Home extends StatelessWidget {
                                     type: ArtworkType.AUDIO,
                                     nullArtworkWidget: musicIcon(),
                                     ),
-                                  trailing: const Icon(Icons.chevron_right, color: whitecolor),
+                                  trailing: const Icon(Icons.chevron_right),
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
                                       AudiosFromType.ALBUM_ID,
@@ -230,7 +240,7 @@ class Home extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  tileColor: bgcolor,
+                                  tileColor: Theme.of(context).colorScheme.tertiary,
                                   title:Namess(mxln:2,text:artist.artist) ,
                                   subtitle:Namess(mxln:1,text:artist.numberOfTracks.toString()) ,
                                   leading: QueryArtworkWidget(
@@ -238,7 +248,7 @@ class Home extends StatelessWidget {
                                     type: ArtworkType.AUDIO,
                                     nullArtworkWidget: musicIcon(),
                                     ),
-                                  trailing: const Icon(Icons.chevron_right, color: whitecolor),
+                                  trailing: const Icon(Icons.chevron_right),
                                   onTap: () async {
                                     final songs = await controller.audioQuery.queryAudiosFrom(
                                       AudiosFromType.ARTIST_ID,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
-import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/components/textsty.dart';
 import 'package:musica/constrolers/playerControl.dart';
@@ -23,8 +22,8 @@ class SearchedSongPage extends StatelessWidget {
     
     var controller = Get.put(playerController());
     return Scaffold(
-      backgroundColor: bgcolor,
-      appBar: customAppBar(pagetitle: "result for $songName"),
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      appBar: customAppBar(pagetitle: "result for $songName",context: context),
       body: FutureBuilder<List<SongModel>>(
                     future: () async {
                       final songs = await controller.audioQuery.querySongs(
@@ -55,7 +54,7 @@ class SearchedSongPage extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  tileColor: bgcolor,
+                                  tileColor: Theme.of(context).colorScheme.tertiary,
                                   title:Namess(mxln: 2, text: snapshot.data![index].displayNameWOExt),
                                   subtitle:Namess(mxln: 1, text: "${snapshot.data![index].artist}") ,
                                   leading:QueryArtworkWidget(
@@ -66,7 +65,6 @@ class SearchedSongPage extends StatelessWidget {
                                   trailing: controller.playIndex.value == index && controller.isPLaying.value
                                       ? const Icon(
                                     Icons.play_arrow,
-                                    color: whitecolor,
                                     size: 26,
                                   )
                                       : const Icon(

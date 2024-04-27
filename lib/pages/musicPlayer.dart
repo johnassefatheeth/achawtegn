@@ -11,14 +11,22 @@ class mPlayer extends StatelessWidget {
 
   const mPlayer({super.key , required this.data});
 
+  String removeFirstZero(String inputString) {
+  if (inputString.startsWith("0")) {
+    return inputString.substring(2);
+  } else {
+    return inputString;
+  }
+}
+
   @override
   Widget build(BuildContext context) {
 
     var controller=Get.put(playerController());
 
     return Scaffold(
-      backgroundColor: bgcolor,
-      appBar: customAppBar(pagetitle: "playing"), 
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      appBar: customAppBar(pagetitle: "playing",context: context), 
       body:Column(
         children: [
           Obx(()=> Expanded(
@@ -36,7 +44,10 @@ class mPlayer extends StatelessWidget {
                    type: ArtworkType.AUDIO,
                    artworkHeight: double.infinity,
                    artworkWidth: double.infinity,
-                   nullArtworkWidget: const Icon(Icons.music_note_sharp),
+                   nullArtworkWidget: const Icon(
+                    Icons.music_note_sharp,
+                    size: 250,
+                    color: whitecolor,),
                    ),
                 )
                 ),
@@ -44,37 +55,37 @@ class mPlayer extends StatelessWidget {
               const SizedBox(height: 10),
           Expanded(
             child: Container(
-              padding:const EdgeInsets.all( 10),
+              padding:EdgeInsets.all( 10),
               alignment: Alignment.center,
-              decoration:const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-                color: whitecolor,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
               child: Obx(()=> Column(
                   children: [
                     Text(
+                      data[controller.playIndex.value].displayNameWOExt,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      data[controller.playIndex.value].displayNameWOExt,
                       style: Ourstyle(),
                     ),
                     Text(
                       data[controller.playIndex.value].artist.toString(),
-                      style: Ourstyle(),
+                      style: Ourstyle(Islight: true),
                     ),
                     const SizedBox(height: 10),
                     Obx(()=> Row(
                         children: [
                           Text(
-                        controller.position.value,
+                        removeFirstZero(controller.position.value),
                         style: Ourstyle(),
                       ),
                         Expanded(
                           child: Slider(
-                            thumbColor: slidecolor,
-                            activeColor: slidecolor,
-                            inactiveColor: bgcolor,
+                            thumbColor: Color.fromARGB(255, 2, 64, 136),
+                            activeColor: Color.fromARGB(255, 2, 64, 136),
+                            inactiveColor: whitecolor,
                             min: const Duration(seconds: 0).inSeconds.toDouble(),
                             max:controller.max.value,
                             value: controller.val.value,
@@ -85,7 +96,7 @@ class mPlayer extends StatelessWidget {
                              )
                              ),
                         Text(
-                        controller.duration.value,
+                        removeFirstZero(controller.duration.value),
                          style: Ourstyle(),
                          )
                         ],
@@ -122,16 +133,18 @@ class mPlayer extends StatelessWidget {
                                 }, 
                               icon:controller.isPLaying.value?const Icon(
                                 Icons.pause,
-                                size: 54):const Icon(
+                                size: 54,):const Icon(
                                 Icons.play_arrow_rounded,
-                                size: 54),
+                                size: 54,
+                                ),
                                 )
                                 ),
                         ),
                         IconButton(onPressed: (){
                                     controller.playSong(data[controller.playIndex.value].uri, controller.playIndex.value+1);
                 
-                        }, icon: const Icon(Icons.skip_next_rounded,size: 40))
+                            
+                        }, icon: const Icon(Icons.skip_next_rounded,size: 40,))
                       ],
                 
                     )

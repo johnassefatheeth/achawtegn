@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-TextStyle Ourstyle({Color color = Colors.white, double size = 14.0}) {
+TextStyle Ourstyle({double size = 14.0,bool isBoled=false,bool Islight=false}) {
   return TextStyle(
     fontSize: size,
-    color: color,
+    fontWeight:isBoled?FontWeight.bold:Islight?FontWeight.w100: FontWeight.normal,
   );
 }
 
