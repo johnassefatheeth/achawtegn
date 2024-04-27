@@ -37,13 +37,11 @@ class PlaylistSongs extends StatelessWidget {
                   song.title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
-                  style: TextStyle(), // Adjust style as needed
                 ),
                 subtitle: Text(
                   song.artist ?? 'Unknown Artist',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
-                  style: TextStyle(), // Adjust style as needed
                 ),
                 leading:QueryArtworkWidget(
                                       id: song.id, 
@@ -71,9 +69,7 @@ class PlaylistSongs extends StatelessWidget {
                         ListTile(
                           title: Text('Rename'),
                           onTap: () {
-                            // Handle rename option (e.g., navigate to rename screen)
                             Navigator.pop(context);
-                            print('Rename option tapped');
                           },
                         ),
                         ListTile(
@@ -104,8 +100,8 @@ class PlaylistSongs extends StatelessWidget {
                             print(songs[index].uri);
                               if (await file.exists()) {
                                 file.delete();
-                                // Update UI or playlist to reflect the deletion (optional)
-                                // You might need to refresh the song list after deletion
+                                // Update UI or playlist 
+                                // refresh the song list after deletion
                               } else {
                                 print('Error: File not found');
                               }
