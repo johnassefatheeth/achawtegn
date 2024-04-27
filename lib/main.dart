@@ -7,7 +7,6 @@ import 'package:musica/pages/home.dart';
 import 'package:musica/pages/profile.dart';
 import 'package:musica/pages/settings.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:musica/theme/theme.dart';
 import 'package:musica/theme/themeProvider.dart';
 import 'package:provider/provider.dart';
 
