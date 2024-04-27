@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
-import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/musicPlayer.dart';
