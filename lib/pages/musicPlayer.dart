@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
@@ -19,10 +22,46 @@ class mPlayer extends StatelessWidget {
   }
 }
 
+
+
   @override
   Widget build(BuildContext context) {
 
     var controller=Get.put(playerController());
+
+
+    void playNextSong() {
+      int nextIndex = controller.playIndex.value + 1;
+      if (controller.audioPlayer.hasNext) {
+        controller.playSong(data[nextIndex], nextIndex);
+      } else {
+        // Optionally, you can handle what happens when the playlist ends.
+        // For now, let's just stop the player.
+        controller.audioPlayer.setLoopMode(LoopMode.one);
+        // controller.isPLaying(false);
+      }
+    }
+
+    void playprevSong() {
+      int nextIndex = controller.playIndex.value - 1;
+        controller.playSong(data[nextIndex], nextIndex);
+    }
+    Timer? songEndTimer;
+
+    void checkSongEnd() {
+  songEndTimer?.cancel();
+  songEndTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    if (controller.position.value == controller.duration.value) {
+      playNextSong();
+      timer.cancel();
+    }
+  });
+}
+
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkSongEnd();
+    });
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
@@ -96,6 +135,7 @@ class mPlayer extends StatelessWidget {
                              ),
                         Text(
                         removeFirstZero(controller.duration.value),
+                        
                          style: Ourstyle(),
                          )
                         ],
@@ -108,7 +148,18 @@ class mPlayer extends StatelessWidget {
                         IconButton(
                           
                           onPressed: (){
-                            controller.playSong(data[controller.playIndex.value], controller.playIndex.value-1);
+                            if (controller.hasPrev.value) {
+                                playprevSong();
+
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("no previous song"),
+                                  duration: Duration(seconds: 2),
+
+                                )
+                              );
+                            }
                           }, 
                           icon: const Icon(
                             Icons.skip_previous_rounded ,
@@ -140,7 +191,18 @@ class mPlayer extends StatelessWidget {
                                 ),
                         ),
                         IconButton(onPressed: (){
-                                    controller.playSong(data[controller.playIndex.value], controller.playIndex.value+1);
+                          if (controller.hasNext.value) {
+                            playNextSong();
+                          } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("no next song"),
+                                  duration: Duration(seconds: 2),
+
+                                )
+                              );
+                          }
+                                    playNextSong();
                 
                             
                         }, icon: const Icon(Icons.skip_next_rounded,size: 40,))

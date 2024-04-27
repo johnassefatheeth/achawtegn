@@ -12,6 +12,8 @@ class playerController extends GetxController{
 
 
   var playIndex=0.obs;
+  var hasNext=true.obs;
+  var hasPrev=false.obs;
   var isPLaying=false.obs;
 
 
@@ -32,6 +34,7 @@ changedurationtosec(seconds){
   audioPlayer.seek(duration);
 }
 
+
 updatePostion(){
   audioPlayer.durationStream.listen((d) {
     duration.value=d.toString().split(".")[0];
@@ -41,6 +44,9 @@ updatePostion(){
     position.value=p.toString().split(".")[0];
     val.value=p.inSeconds.toDouble();
   });
+
+  if(audioPlayer.position==audioPlayer.duration){
+                        }
 
 }
 
@@ -52,9 +58,7 @@ playSong(SongModel song,index){
     AudioSource.uri(
       Uri.parse(song.uri!),
       tag: MediaItem(
-        // Specify a unique ID for each media item:
         id: song.id.toString(),
-        // Metadata to display in the notification:
         album: song.album,
         title: song.displayNameWOExt,
         artUri: Uri.parse(song.uri!),
@@ -64,6 +68,10 @@ playSong(SongModel song,index){
   );
   audioPlayer.play();
   isPLaying.value=true;
+  if(!audioPlayer.hasNext)
+    hasNext.value=false;
+  if(audioPlayer.hasPrevious)
+    hasPrev.value=true;
   updatePostion();
   }
   on Exception catch (e){
