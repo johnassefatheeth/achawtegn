@@ -26,7 +26,7 @@ class mPlayer extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
-      appBar: customAppBar(pagetitle: "playing",context: context), 
+      appBar: customAppBar(pagetitle: "playing".tr,context: context), 
       body:Column(
         children: [
           Obx(()=> Expanded(

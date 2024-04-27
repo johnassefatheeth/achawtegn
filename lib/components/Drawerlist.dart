@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DrawerList extends StatefulWidget {
   const DrawerList({super.key});
@@ -14,9 +15,9 @@ class _DrawerListState extends State<DrawerList> {
       padding:const EdgeInsets.only(top: 15),
       child: Column(
         children: [
-          menuItem("myprofile", Icons.person),
-          menuItem("settings", Icons.settings),
-          menuItem("rate", Icons.rate_review),
+          menuItem("myprofile".tr, Icons.person),
+          menuItem("settings".tr, Icons.settings),
+          menuItem("rate".tr, Icons.rate_review),
           menuItem("FaQ", Icons.format_quote)
         ],
       ),

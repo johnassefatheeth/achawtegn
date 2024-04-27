@@ -44,6 +44,7 @@ dependencies:
   animated_splash_screen: ^1.3.0
   lottie: ^3.1.0
   provider:
+  flutter_locales: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,7 @@ flutter:
   assets:
      - lib/images/
      - assets/Lottie/
+     - assets/locales/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

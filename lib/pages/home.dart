@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
       length: 4,
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.tertiary,
-        appBar: customAppBar(hasAction: true, pagetitle: "music",context: context),
+        appBar: customAppBar(hasAction: true, pagetitle: "music".tr,context: context),
         drawer: Drawer(
           child: SingleChildScrollView(
             child: Container(
@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
           children: [
             Container(
               color: Theme.of(context).colorScheme.tertiary,
-              child: const TabBar(
+              child: TabBar(
                 indicatorColor: whitecolor,
                 labelStyle: TextStyle(
                   fontWeight: FontWeight.bold, 
@@ -50,10 +50,10 @@ class Home extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
                 tabs: [
-                  Tab(text: "songs"),
-                  Tab(text: "playlist"),
-                  Tab(text: "album"),
-                  Tab(text: "artists"),
+                  Tab(text: "songs".tr),
+                  Tab(text: "playlist".tr),
+                  Tab(text: "album".tr),
+                  Tab(text: "artists".tr),
                 ],
                 dividerColor: Colors.black,
               ),
