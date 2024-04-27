@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:musica/constrolers/translate.dart';
 import 'package:musica/pages/UI/splashScreen.dart';
 import 'package:musica/pages/auth/logInpage.dart';
@@ -12,9 +13,14 @@ import 'package:musica/theme/themeProvider.dart';
 import 'package:provider/provider.dart';
 
 
-void main()async{
+Future<void> main()async{
   WidgetsFlutterBinding.ensureInitialized();
    await Firebase.initializeApp();
+   await JustAudioBackground.init(
+    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+    androidNotificationChannelName: 'Audio playback',
+    androidNotificationOngoing: true,
+  );
   runApp(ChangeNotifierProvider(create: (context)=>ThemeProvider(),
   child: MyApp(),));
 }

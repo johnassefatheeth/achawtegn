@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:musica/const/colors.dart';
 
@@ -27,18 +28,10 @@ class _DrawerHeaderpartState extends State<DrawerHeaderpart> {
               image: DecorationImage(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQubUz3YKP7UQO_YFz5IQ1J4ou7sbDXAoy-40_eHoRTdA&s'))
             ),
           ),
-          const Text(
-            "username",
-            style: TextStyle(
-              color: Colors.white
-            ),
-          ),
-          const Text(
-            "johndoe@gmail.com",
-            style: TextStyle(
-              color: Colors.white
-            ),
-            )
+          Text(
+                (FirebaseAuth.instance.currentUser==null)?"":FirebaseAuth.instance.currentUser!.email.toString(),
+                style: const TextStyle(fontSize: 16, ),
+              )
         ],
       ),
     );

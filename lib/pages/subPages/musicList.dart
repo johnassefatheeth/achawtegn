@@ -76,7 +76,8 @@ class PlaylistSongs extends StatelessWidget {
                           title:const Text('Delete',
                           style: TextStyle(
                             color: Colors.red,
-                          ),),
+                          ),
+                          ),
                           onTap: () async {
                             await showDialog(
                               context: context,
@@ -96,10 +97,10 @@ class PlaylistSongs extends StatelessWidget {
                               ],
                             );})                 
 ;
-                            final file = File(songs[index].uri.toString());
-                            print(songs[index].uri);
+                            final file = File(songs[index].data);
                               if (await file.exists()) {
-                                file.delete();
+                                print(songs[index].data);
+                                // file.delete();
                                 // Update UI or playlist 
                                 // refresh the song list after deletion
                               } else {
