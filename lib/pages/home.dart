@@ -96,7 +96,7 @@ class Home extends StatelessWidget {
                                       type: ArtworkType.AUDIO,
                                       nullArtworkWidget: musicIcon(),
                                       ),
-                                  trailing: controller.playIndex.value == index && controller.isPLaying.value
+                                  trailing: controller.musicname.value == snapshot.data![index].displayName && controller.isPLaying.value
                                       ? const Icon(
                                     Icons.play_arrow,
                                     size: 26,

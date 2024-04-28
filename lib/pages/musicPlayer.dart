@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
@@ -32,14 +31,8 @@ class mPlayer extends StatelessWidget {
 
     void playNextSong() {
       int nextIndex = controller.playIndex.value + 1;
-      if (controller.audioPlayer.hasNext) {
         controller.playSong(data[nextIndex], nextIndex);
-      } else {
-        // Optionally, you can handle what happens when the playlist ends.
-        // For now, let's just stop the player.
-        controller.audioPlayer.setLoopMode(LoopMode.one);
-        // controller.isPLaying(false);
-      }
+     
     }
 
     void playprevSong() {

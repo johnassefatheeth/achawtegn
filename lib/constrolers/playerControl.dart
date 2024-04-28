@@ -15,6 +15,7 @@ class playerController extends GetxController{
   var hasNext=true.obs;
   var hasPrev=false.obs;
   var isPLaying=false.obs;
+  var musicname=''.obs;
 
 
   var duration=''.obs;
@@ -53,6 +54,8 @@ updatePostion(){
 
 playSong(SongModel song,index){
   playIndex.value=index;
+  musicname.value=song.displayName;
+
   try{
   audioPlayer.setAudioSource(
     AudioSource.uri(
