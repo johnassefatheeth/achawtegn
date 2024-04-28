@@ -7,6 +7,7 @@ import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/components/textsty.dart';
 import 'package:musica/constrolers/playerControl.dart';
+import 'package:musica/pages/Createplaylist.dart';
 import 'package:musica/pages/subPages/musicList.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -130,58 +131,55 @@ class Home extends StatelessWidget {
                         return Center(child: Center(child: Text('No Playlists Found', style: Ourstyle())));
                       } else {
                         return Column(
-                          children: [
-                            // Padding(
-                            //   padding: const EdgeInsets.all(20.0),
-                            //   child: FloatingActionButton(
-                            //   child: Text(
-                            //     "New"
-                            //   ),
-                            //   onPressed: ( ){
-                            //     Get.to(() => createPlaylist(
-                            //                       )
-                            //                       );
-                            //   }
-                                
-                            //   ),
-                            // ),
+  children: [
+    Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: ElevatedButton(
+        child: Text("New"),
+        onPressed: () {
+          Get.to(() => SongSelection());
+        },
+      ),
+    ),
+    Expanded( // Wrap ListView.builder with Expanded
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            final playlist = snapshot.data![index];
+            return Container(
+              margin: const EdgeInsets.only(top: 5),
+              child: ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                tileColor: Theme.of(context).colorScheme.tertiary,
+                title: Namess(mxln: 2, text: playlist.playlist),
+                subtitle: Namess(mxln: 1, text: playlist.numOfSongs.toString()),
+                leading: QueryArtworkWidget(
+                  id: snapshot.data![index].id, 
+                  type: ArtworkType.AUDIO,
+                  nullArtworkWidget: musicIcon(),
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () async {
+                  final songs = await controller.audioQuery.queryAudiosFrom(
+                    AudiosFromType.PLAYLIST,
+                    playlist.id,
+                  );
+                  Get.to(() => PlaylistSongs(songs: songs, pageName:playlist.playlist));
+                },
+              ),
+            );
+          },
+        ),
+      ),
+    ),
+  ],
+);
 
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                itemCount: snapshot.data!.length,
-                                itemBuilder: (context, index) {
-                                  final playlist = snapshot.data![index];
-                                  return Container(
-                                    margin: const EdgeInsets.only(top: 5),
-                                    child: ListTile(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      tileColor: Theme.of(context).colorScheme.tertiary,
-                                      title:Namess(mxln: 2, text: playlist.playlist),
-                                      subtitle:Namess(mxln: 1, text: playlist.numOfSongs.toString()) ,
-                                      leading: QueryArtworkWidget(
-                                        id: snapshot.data![index].id, 
-                                        type: ArtworkType.AUDIO,
-                                        nullArtworkWidget: musicIcon(),
-                                        ),
-                                      trailing: const Icon(Icons.chevron_right),
-                                      onTap: () async {
-                                        final songs = await controller.audioQuery.queryAudiosFrom(
-                                          AudiosFromType.PLAYLIST,
-                                          playlist.id,
-                                        );
-                                        Get.to(() => PlaylistSongs(songs: songs,pageName:playlist.playlist));
-                                      },
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                        );
                       }
                     },
                   ),
