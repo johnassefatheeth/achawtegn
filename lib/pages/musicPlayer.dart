@@ -141,7 +141,7 @@ class mPlayer extends StatelessWidget {
                         IconButton(
                           
                           onPressed: (){
-                            if (controller.hasPrev.value) {
+                            if (controller.playIndex.value - 1>-1) {
                                 playprevSong();
 
                             } else {
@@ -184,9 +184,10 @@ class mPlayer extends StatelessWidget {
                                 ),
                         ),
                         IconButton(onPressed: (){
-                          if (controller.hasNext.value) {
-                            playNextSong();
-                          } else {
+                          try{
+                            int nextIndex = controller.playIndex.value + 1;
+                            controller.playSong(data[nextIndex], nextIndex);
+                          }catch(e){
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text("no next song"),
@@ -194,8 +195,9 @@ class mPlayer extends StatelessWidget {
 
                                 )
                               );
+                            
                           }
-                                    playNextSong();
+                           
                 
                             
                         }, icon: const Icon(Icons.skip_next_rounded,size: 40,))

@@ -12,8 +12,8 @@ class playerController extends GetxController{
 
 
   var playIndex=0.obs;
-  var hasNext=true.obs;
-  var hasPrev=false.obs;
+  var hasNext=true;
+  var hasPrev=true;
   var isPLaying=false.obs;
   var musicname=''.obs;
 
@@ -72,9 +72,9 @@ playSong(SongModel song,index){
   audioPlayer.play();
   isPLaying.value=true;
   if(!audioPlayer.hasNext)
-    hasNext.value=false;
-  if(audioPlayer.hasPrevious)
-    hasPrev.value=true;
+    hasNext=false;
+  if(!audioPlayer.hasPrevious)
+    hasPrev=false;
   updatePostion();
   }
   on Exception catch (e){
