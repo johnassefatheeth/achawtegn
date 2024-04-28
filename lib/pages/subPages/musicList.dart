@@ -137,9 +137,13 @@ class PlaylistSongs extends StatelessWidget {
                                             size: 26,
                                           ),
                                       ),
-                onTap: () {
+                onTap: ()async {
+                    await controller.playSong(songs[index], index);
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context)=>PlaylistSongs(songs: songs,pageName: pageName)
+                      )
+                    );
                     Get.to(() => mPlayer(data: songs));
-                    controller.playSong(songs[index], index);
                 },
               ),
             );
