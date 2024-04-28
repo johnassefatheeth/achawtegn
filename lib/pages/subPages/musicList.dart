@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
+import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
@@ -32,7 +33,7 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
       body:Column(
         children: [widget.playlistId!=-1?ElevatedButton(onPressed: ( ){
           Get.to(addToPlaylist(playlistId: widget.playlistId));
-        }, child: Text("add")):SizedBox(height: 0),
+        }, child: Text("add",style: TextStyle(color: whitecolor),)):SizedBox(height: 0),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
