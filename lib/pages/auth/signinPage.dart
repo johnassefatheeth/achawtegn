@@ -18,15 +18,26 @@ class _SignInPageState extends State<SignInPage> {
   final passwordController = TextEditingController();
 
 
-  void EMessage(String e){
-    showDialog(
-      context: context,
-       builder: (context){
-        return AlertDialog(title:Text(e));
-       });
+String delchrs(String inputString) {
+  StringBuffer result = StringBuffer();
+  bool insideBrackets = false;
+
+  for (int i = 0; i < inputString.length; i++) {
+    if (inputString[i] == '[') {
+      insideBrackets = true;
+      continue;
+    } else if (inputString[i] == ']') {
+      insideBrackets = false;
+      continue;
+    }
+
+    if (!insideBrackets) {
+      result.write(inputString[i]);
+    }
   }
 
-
+  return result.toString();
+}
 
 
 
@@ -49,7 +60,13 @@ class _SignInPageState extends State<SignInPage> {
       } catch(e){
         
           Navigator.pop(context);
-          EMessage(e.toString());
+          ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(delchrs(e.toString())),
+                                  duration: Duration(seconds: 2),
+
+                                )
+                              );
         
       }
         

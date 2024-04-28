@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,13 +19,26 @@ class _logInPageState extends State<logInPage> {
   final passwordController = TextEditingController();
 
 
-  void EMessage(String e){
-    showDialog(
-      context: context,
-       builder: (context){
-        return AlertDialog(title:Text(e));
-       });
+  String delchrs(String inputString) {
+  StringBuffer result = StringBuffer();
+  bool insideBrackets = false;
+
+  for (int i = 0; i < inputString.length; i++) {
+    if (inputString[i] == '[') {
+      insideBrackets = true;
+      continue;
+    } else if (inputString[i] == ']') {
+      insideBrackets = false;
+      continue;
+    }
+
+    if (!insideBrackets) {
+      result.write(inputString[i]);
+    }
   }
+
+  return result.toString();
+}
 
   void logIn() async {
 
@@ -44,7 +58,14 @@ class _logInPageState extends State<logInPage> {
       }catch(e){
         
           Navigator.pop(context);
-          EMessage(e.toString());
+          print(e.toString());
+          ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(delchrs(e.toString())),
+                                  duration: Duration(seconds: 5),
+
+                                )
+                              );
       }
         
 
