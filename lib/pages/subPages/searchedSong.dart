@@ -88,7 +88,6 @@ class SearchedSongPage extends StatelessWidget {
   }
 
   Future<List<SongModel>> searchSongs(String searchTerm, List<SongModel> allSongs) async {
-  // No asynchronous operations are involved here, but we can keep the async structure for consistency.
   final lowercaseSearchTerm = searchTerm.toLowerCase();
   final results = allSongs.where((song) => song.title.toLowerCase().contains(lowercaseSearchTerm)).toList();
   return results;

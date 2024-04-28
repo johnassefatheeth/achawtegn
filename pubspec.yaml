@@ -46,6 +46,8 @@ dependencies:
   provider:
   flutter_locales: ^3.0.1
   just_audio_background: ^0.0.1-beta.11
+  firebase_storage: ^11.7.4
+  
 
 dev_dependencies:
   flutter_test:

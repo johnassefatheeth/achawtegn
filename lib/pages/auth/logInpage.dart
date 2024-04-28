@@ -72,6 +72,44 @@ class _logInPageState extends State<logInPage> {
         
   }
 
+  void resetPass() async {
+
+    showDialog(context:context , 
+    builder: (context){
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    );
+      try{
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(delchrs("email sent")),
+                                  duration: Duration(seconds: 5),
+
+                                )
+                              );
+      }catch(e){
+        
+          Navigator.pop(context);
+          print(e.toString());
+          ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(delchrs(e.toString())),
+                                  duration: Duration(seconds: 5),
+
+                                )
+                              );
+      }
+        
+
+        
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +134,10 @@ class _logInPageState extends State<logInPage> {
                 obsecureText: true,
                 hintText: "your password",
               ),
-              const Text("forgot password?"),
+              TextButton(onPressed: (){
+
+              },
+              child: Text("forgot password"),),
               const SizedBox(height: 10,),
               GestureDetector(
                 onTap: (){

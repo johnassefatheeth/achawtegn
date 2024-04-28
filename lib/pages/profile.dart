@@ -13,9 +13,17 @@ class profile extends StatefulWidget {
   @override
   State<profile> createState() => _profileState();
 }
+String getStringBeforeAtSign(String input) {
+  int atIndex = input.indexOf('@');
+  if (atIndex != -1) {
+    return input.substring(0, atIndex);
+  } else {
+    // Return the original string if '@' sign is not found
+    return input;
+  }
+}
 
 class _profileState extends State<profile> {
-  final String displayName="john";
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +42,7 @@ class _profileState extends State<profile> {
               ),
               const SizedBox(height: 16),
               Text(
-                displayName,
+                (FirebaseAuth.instance.currentUser==null)?"":getStringBeforeAtSign(FirebaseAuth.instance.currentUser!.email.toString()),
                 style: const TextStyle(fontSize: 20, fontWeight:FontWeight.bold),
               ),
               const SizedBox(height: 8),
