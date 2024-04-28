@@ -7,7 +7,6 @@ import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/components/textsty.dart';
 import 'package:musica/constrolers/playerControl.dart';
-import 'package:musica/pages/Createplaylist.dart';
 import 'package:musica/pages/subPages/musicList.dart';
 import 'package:musica/pages/musicPlayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
