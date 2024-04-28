@@ -169,7 +169,7 @@ class Home extends StatelessWidget {
                     AudiosFromType.PLAYLIST,
                     playlist.id,
                   );
-                  Get.to(() => PlaylistSongs(songs: songs, pageName:playlist.playlist));
+                  Get.to(() => PlaylistSongs(songs: songs, pageName:playlist.playlist,playlistId: playlist.id,));
                 },
               ),
             );

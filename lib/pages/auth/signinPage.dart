@@ -60,10 +60,10 @@ String delchrs(String inputString) {
       } catch(e){
         
           Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(delchrs(e.toString())),
-                                  duration: Duration(seconds: 2),
+                                  duration: Duration(seconds: 3),
 
                                 )
                               );

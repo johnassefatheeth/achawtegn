@@ -19,6 +19,6 @@ class Splash extends StatelessWidget {
       ),
       nextScreen:Home() ,
       splashIconSize: 400 ,
-      backgroundColor: Color.fromARGB(254, 97, 162, 232),);
+      backgroundColor: Color.fromARGB(253, 255, 255, 255));
   }
 }
