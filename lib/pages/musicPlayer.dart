@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
