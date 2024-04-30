@@ -12,10 +12,9 @@ class playerController extends GetxController{
 
 
   var playIndex=0.obs;
-  var hasNext=true;
-  var hasPrev=true;
   var isPLaying=false.obs;
   var musicname=''.obs;
+  var shuffle=true.obs;
 
 
   var duration=''.obs;
@@ -50,7 +49,11 @@ updatePostion(){
                         }
 
 }
-
+void toggleShuffle(){
+  
+    audioPlayer.setShuffleModeEnabled(!audioPlayer.shuffleModeEnabled);
+    shuffle.value=audioPlayer.shuffleModeEnabled;
+  }
 
 playSong(SongModel song,index){
   playIndex.value=index;
@@ -70,11 +73,9 @@ playSong(SongModel song,index){
       )
   );
   audioPlayer.play();
+
+
   isPLaying.value=true;
-  if(!audioPlayer.hasNext)
-    hasNext=false;
-  if(!audioPlayer.hasPrevious)
-    hasPrev=false;
   updatePostion();
   }
   on Exception catch (e){

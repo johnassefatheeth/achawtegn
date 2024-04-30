@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/const/colors.dart';
@@ -134,76 +136,121 @@ class mPlayer extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 15,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          
-                          onPressed: (){
-                            if (controller.playIndex.value - 1>-1) {
-                                playprevSong();
-
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text("no previous song"),
-                                  duration: Duration(seconds: 2),
-
-                                )
-                              );
-                            }
-                          }, 
-                          icon: const Icon(
-                            Icons.skip_previous_rounded ,
-                            size: 40,
-                            )
-                            ),
-                        Obx(()=> Transform.scale(
-                            scale: 1.5,
-                            child: IconButton(
-                              onPressed: (
-                                
-                              ){
-                                if(controller.isPLaying.value){
-                                  controller.audioPlayer.pause();
-                                  controller.isPLaying(false);
-                                }
-                                else{
-                                  controller.audioPlayer.play();
-                                  controller.isPLaying(true);
-                                }
-                                }, 
-                              icon:controller.isPLaying.value?const Icon(
-                                Icons.pause,
-                                size: 54,):const Icon(
-                                Icons.play_arrow_rounded,
-                                size: 54,
-                                ),
-                                )
-                                ),
-                        ),
-                        IconButton(onPressed: (){
-                          try{
-                            int nextIndex = controller.playIndex.value + 1;
-                            controller.playSong(data[nextIndex], nextIndex);
-                          }catch(e){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text("no next song"),
-                                  duration: Duration(seconds: 2),
-
-                                )
-                              );
-                            
-                          }
-                           
+                    const SizedBox(height: 0,),
+                    Expanded(
+  child: SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Obx(() => Transform.scale(
+          scale: 1.5,
+          child: IconButton(
+            onPressed: () {
+              if(controller.audioPlayer.shuffleModeEnabled){
+                controller.toggleShuffle();
+                print(controller.shuffle.value);
+              } else {
                 
-                            
-                        }, icon: const Icon(Icons.skip_next_rounded,size: 40,))
-                      ],
+                controller.toggleShuffle();;
+                print(controller.shuffle.value);
+              }
+            }, 
+            icon: controller.shuffle.value ? const Icon(
+              Icons.shuffle,
+              size: 18,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ) : const Icon(
+              Icons.shuffle,
+              size: 18,
+              color: Color.fromARGB(221, 147, 147, 147),
+            ),
+          ),
+        )),
+        IconButton(
+          onPressed: () {
+            if (controller.playIndex.value - 1 > -1) {
+              playprevSong();
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("no previous song"),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            }
+          }, 
+          icon: const Icon(
+            Icons.skip_previous_rounded,
+            size: 40,
+          ),
+        ),
+        Obx(() => Transform.scale(
+          scale: 1.5,
+          child: IconButton(
+            onPressed: () {
+              if(controller.isPLaying.value){
+                controller.audioPlayer.pause();
+                controller.isPLaying(false);
+              } else {
+                controller.audioPlayer.play();
+                controller.isPLaying(true);
+              }
+            }, 
+            icon: controller.isPLaying.value ? const Icon(
+              Icons.pause,
+              size: 54,
+            ) : const Icon(
+              Icons.play_arrow_rounded,
+              size: 54,
+            ),
+          ),
+        )),
+        IconButton(
+          onPressed: () {
+            try {
+              int nextIndex = controller.playIndex.value + 1;
+              controller.playSong(data[nextIndex], nextIndex);
+            } catch(e) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("no next song"),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            }
+          }, 
+          icon: const Icon(Icons.skip_next_rounded, size: 40),
+        ),
+        Obx(() => Transform.scale(
+          scale: 1.5,
+          child: IconButton(
+            onPressed: () {
+              if(controller.audioPlayer.shuffleModeEnabled){
+                controller.toggleShuffle();
+                print(controller.shuffle.value);
+              } else {
                 
-                    )
+                controller.toggleShuffle();;
+                print(controller.shuffle.value);
+              }
+            }, 
+            icon: controller.shuffle.value ? const Icon(
+              Icons.loop,
+              size: 18,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ) : const Icon(
+              Icons.loop,
+              size: 18,
+              color: Color.fromARGB(221, 147, 147, 147),
+            ),
+          ),
+        ))
+      ],
+    ),
+  ),
+),
+
                 
                   ],
                 ),
