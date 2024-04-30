@@ -12,13 +12,13 @@ class mPlayer extends StatelessWidget {
 
   const mPlayer({super.key , required this.data});
 
-  String removeFirstZero(String inputString) {
-  if (inputString.startsWith("0")) {
-    return inputString.substring(2);
-  } else {
-    return inputString;
-  }
-}
+      String removeFirstZero(String inputString) {
+      if (inputString.startsWith("0")) {
+        return inputString.substring(2);
+      } else {
+        return inputString;
+      }
+    }
 
 
 
