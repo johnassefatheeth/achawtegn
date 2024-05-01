@@ -11,8 +11,10 @@ class DrawerHeaderpart extends StatefulWidget {
 
 class _DrawerHeaderpartState extends State<DrawerHeaderpart> {
   @override
+  //build method
   Widget build(BuildContext context) {
-    return  Container(
+    // continer widget
+    return Container(
       color: bgcolor,
       width: double.infinity,
       height: 200,
@@ -23,15 +25,20 @@ class _DrawerHeaderpartState extends State<DrawerHeaderpart> {
           Container(
             margin: EdgeInsets.only(bottom: 10),
             height: 70,
-            decoration:const BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQubUz3YKP7UQO_YFz5IQ1J4ou7sbDXAoy-40_eHoRTdA&s'))
-            ),
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQubUz3YKP7UQO_YFz5IQ1J4ou7sbDXAoy-40_eHoRTdA&s'))),
           ),
           Text(
-                (FirebaseAuth.instance.currentUser==null)?"":FirebaseAuth.instance.currentUser!.email.toString(),
-                style: const TextStyle(fontSize: 16, ),
-              )
+            (FirebaseAuth.instance.currentUser == null)
+                ? ""
+                : FirebaseAuth.instance.currentUser!.email.toString(),
+            style: const TextStyle(
+              fontSize: 16,
+            ),
+          )
         ],
       ),
     );
