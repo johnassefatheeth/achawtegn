@@ -125,10 +125,25 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
                                                             ),
                                                             ListTile(
                                                               title: Text('Properties'),
-                                                              onTap: () {
-                                                                // Handle properties option (e.g., show file details)
-                                                                Navigator.pop(context);
-                                                                print('Properties option tapped');
+                                                              onTap: () async {
+                                                                await showDialog(
+                                                                  context: context,
+                                                                  builder: (BuildContext context) {
+                                                                    return AlertDialog(
+                                                                      title: Text('Song Info'),
+                                                                      content: Column(
+                                                                        children: [
+                                                                          Text('title-'+song.displayName),
+                                                                          Text('type-'+song.fileExtension),
+                                                                          Text('path-'+song.uri.toString()),
+                                                                          Text('date added-'+song.dateAdded.toString()),
+                                                                          Text('last modified-'+song.dateModified.toString()),
+                                                                        ],
+                                                                      ),
+                                                                      
+                                                                );
+                                                                }
+                                                                );
                                                               },
                                                             ),
                                                           ],
