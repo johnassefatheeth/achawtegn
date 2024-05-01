@@ -19,7 +19,7 @@ class InputButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            btnName, // Display the provided button name
+            btnName, 
             style: Ourstyle(), // Apply the specified text style (Ourstyle)
           ),
         ),
