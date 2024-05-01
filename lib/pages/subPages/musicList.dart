@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
+import 'package:musica/components/textsty.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
@@ -48,22 +49,14 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       tileColor: Theme.of(context).colorScheme.tertiary,
-                      title: Text(
-                        song.title,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                      subtitle: Text(
-                        song.artist ?? 'Unknown Artist',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
+                      title:Namess(mxln:2,text:song.title) ,
+                      subtitle: Namess(mxln:1,text:song.artist ?? 'Unknown Artist'),
                       leading:QueryArtworkWidget(
                                             id: song.id, 
                                             type: ArtworkType.AUDIO,
                                             nullArtworkWidget:musicIcon(),
                                             ), 
-                      trailing: controller.musicname.value == widget.songs[index].displayName && controller.isPLaying.value
+                      trailing: controller.musicname.value == song.displayName && controller.isPLaying.value
                                             ? const Icon(
                                           Icons.play_arrow,
                                           size: 26,
@@ -109,9 +102,9 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
                                                                   ],
                                                                 );})                 
                                     ;
-                                                                final file = File(widget.songs[index].data);
+                                                                final file = File(song.data);
                                                                   if (await file.exists()) {
-                                                                    print(widget.songs[index].data);
+                                                                    print(song.data);
                                                                     // file.delete();
                                                                     // Update UI or playlist 
                                                                     // refresh the song list after deletion
@@ -149,8 +142,8 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
                                                   size: 26,
                                                 ),
                                             ),
-                      onTap: ()async {
-                          await controller.playSong(widget.songs[index], index);
+                      onTap: () {
+                           controller.playSong(song, index);
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context)=>PlaylistSongs(songs: widget.songs,pageName: widget.pageName)
                             )

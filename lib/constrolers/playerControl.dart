@@ -55,7 +55,7 @@ void toggleShuffle(){
     shuffle.value=audioPlayer.shuffleModeEnabled;
   }
 
-playSong(SongModel song,index){
+playSong(SongModel song,int index){
   playIndex.value=index;
   musicname.value=song.displayName;
 
