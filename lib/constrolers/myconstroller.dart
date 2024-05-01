@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+/// Controller class for managing app-level state using GetX.
 class MygetxController extends GetxController{
 
 
