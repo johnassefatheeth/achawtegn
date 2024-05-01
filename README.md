@@ -1,8 +1,10 @@
 # musica
 
-A new Flutter project.
+A new Flutter mobile app develeopment project.
 
 ## Getting Started
+
+this is a music player app that developed by group team of software engineering student at bahr dar university
 
 This project is a starting point for a Flutter application.
 
