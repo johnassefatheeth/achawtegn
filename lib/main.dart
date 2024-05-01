@@ -12,43 +12,45 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:musica/theme/themeProvider.dart';
 import 'package:provider/provider.dart';
 
-
-Future<void> main()async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp();
-   await JustAudioBackground.init(
+  await Firebase.initializeApp();
+  await JustAudioBackground.init(
     androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
     androidNotificationChannelName: 'Audio playback',
     androidNotificationOngoing: true,
   );
-  runApp(ChangeNotifierProvider(create: (context)=>ThemeProvider(),
-  child: MyApp(),));
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    child: MyApp(),
+  ));
 }
 
+//root wigdet
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   @override
+  // build method
   Widget build(BuildContext context) {
     return GetMaterialApp(
-    debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       translations: Translate(),
-      locale: Locale('en','US'),
-      fallbackLocale: Locale('en','US'),
+      locale: Locale('en', 'US'),
+      fallbackLocale: Locale('en', 'US'),
       title: 'musica',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home:const Splash(),
+      home: const Splash(),
       routes: {
-        '/home':(context) => const Home(),
-        '/myprofile':(context) =>  profile(),
-        '/settings':(context) => const SettingsPage(),
+        '/home': (context) => const Home(),
+        '/myprofile': (context) => profile(),
+        '/settings': (context) => const SettingsPage(),
         // '/rate':(context) => const Rate(),
         // '/FaQ':(context) => const FaQ(),
-        '/signin':(context) => SignInPage(),
-        '/login':(context)=>logInPage()
-
+        //navegate to sign in page
+        '/signin': (context) => SignInPage(),
+        //navagate to Login page
+        '/login': (context) => logInPage()
       },
     );
   }
 }
-
-
