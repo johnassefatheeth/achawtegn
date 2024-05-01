@@ -14,6 +14,7 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+// DefaultFirebaseOptions
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -43,6 +44,7 @@ class DefaultFirebaseOptions {
     }
   }
 
+// FirebaseOptions for android
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDfnUVEJvIXMEiJlAOZcaiPpSf36XiCBuM',
     appId: '1:650878513370:android:d46c5f8922e04afb6df5e3',
@@ -50,7 +52,7 @@ class DefaultFirebaseOptions {
     projectId: 'musica-87d5f',
     storageBucket: 'musica-87d5f.appspot.com',
   );
-
+// FirebaseOptions for ios
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyA1Fd58hvou0WeHPeqJPmB12V1D-fv46YM',
     appId: '1:650878513370:ios:f5a07ae725395f346df5e3',
@@ -60,6 +62,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.musica',
   );
 
+// FirebaseOptions for macos
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyA1Fd58hvou0WeHPeqJPmB12V1D-fv46YM',
     appId: '1:650878513370:ios:f5a07ae725395f346df5e3',
@@ -68,6 +71,7 @@ class DefaultFirebaseOptions {
     storageBucket: 'musica-87d5f.appspot.com',
     iosBundleId: 'com.example.musica',
   );
+// FirebaseOptions for windows
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyCyzRo5tBy0gdRYcMhIW2KyQsxSIqaIfTY',
