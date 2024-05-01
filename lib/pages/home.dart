@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:musica/components/Drawerlist.dart';
 import 'package:musica/components/custappBar.dart';
 import 'package:musica/components/drawerHeader.dart';
+import 'package:musica/components/musdicOptions.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/components/textsty.dart';
@@ -102,10 +103,7 @@ class Home extends StatelessWidget {
                                     Icons.play_arrow,
                                     size: 26,
                                   )
-                                      : const Icon(
-                                    Icons.more_vert,
-                                    size: 26,
-                                  ),
+                                      : options(song:snapshot.data![index],context:context),
                                   onTap: () {
                                     Get.to(() => mPlayer(data: snapshot.data!));
                                     controller.playSong(snapshot.data![index], index);

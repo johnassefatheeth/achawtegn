@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
+import 'package:musica/components/musdicOptions.dart';
 import 'package:musica/const/icon.dart';
 import 'package:musica/components/textsty.dart';
 import 'package:musica/constrolers/playerControl.dart';
@@ -67,11 +68,7 @@ class SearchedSongPage extends StatelessWidget {
                                     Icons.play_arrow,
                                     size: 26,
                                   )
-                                      : const Icon(
-                                    Icons.music_note_outlined,
-                                    color: Colors.transparent,
-                                    size: 26,
-                                  ),
+                                      : options(song:snapshot.data![index],context:context),
                                   onTap: () {
                                     Get.to(() => mPlayer(data: snapshot.data!));
                                     controller.playSong(snapshot.data![index], index);
