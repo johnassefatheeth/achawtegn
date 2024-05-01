@@ -59,6 +59,7 @@ class Home extends StatelessWidget {
                 dividerColor: Colors.black,
               ),
             ),
+            // expanded wigdet to fill avaliable space
             Expanded(
               child: TabBarView(
                 children: [
@@ -141,7 +142,8 @@ class Home extends StatelessWidget {
         },
       ),
     ),
-    Expanded( // Wrap ListView.builder with Expanded
+    // Wrap ListView.builder with Expanded
+    Expanded( 
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
@@ -169,6 +171,7 @@ class Home extends StatelessWidget {
                     AudiosFromType.PLAYLIST,
                     playlist.id,
                   );
+                  //navagate to play list page
                   Get.to(() => PlaylistSongs(songs: songs, pageName:playlist.playlist,playlistId: playlist.id,));
                 },
               ),
