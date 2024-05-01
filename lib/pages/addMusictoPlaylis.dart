@@ -4,7 +4,7 @@ import 'package:musica/components/custappBar.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/home.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-
+// addToPlaylist state full wigdet that create state object
 class addToPlaylist extends StatefulWidget {
   final playlistId;
    addToPlaylist({super.key,required this.playlistId});
@@ -16,6 +16,7 @@ class addToPlaylist extends StatefulWidget {
 class _MyWidgetState extends State<addToPlaylist> {
   final List<int> selectedSongs = [];
   @override
+  // build method 
   Widget build(BuildContext context) {
     
     
@@ -56,6 +57,7 @@ class _MyWidgetState extends State<addToPlaylist> {
                       },
                     ),
                   ),
+                  // floating  action button to manage the state
                   FloatingActionButton(onPressed: () async {
                     if(selectedSongs.length!=0){
                       showDialog(
