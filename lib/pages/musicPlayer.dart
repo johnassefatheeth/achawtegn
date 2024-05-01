@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
+import 'package:musica/components/snackBar.dart';
 import 'package:musica/const/colors.dart';
 import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
@@ -170,10 +171,7 @@ class mPlayer extends StatelessWidget {
               playprevSong();
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("no previous song"),
-                  duration: Duration(seconds: 2),
-                ),
+                snakB(texContent: "no previos song", duration: 3)
               );
             }
           }, 
@@ -210,10 +208,8 @@ class mPlayer extends StatelessWidget {
               controller.playSong(data[nextIndex], nextIndex);
             } catch(e) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("no next song"),
-                  duration: Duration(seconds: 2),
-                ),
+                
+                snakB(texContent: "no next song", duration: 3)
               );
             }
           }, 
