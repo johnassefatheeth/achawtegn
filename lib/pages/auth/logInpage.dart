@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/button.dart';
+import 'package:musica/components/charEdit.dart';
 import 'package:musica/components/snackBar.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/pages/auth/signinPage.dart';
@@ -20,26 +21,7 @@ class _logInPageState extends State<logInPage> {
   final passwordController = TextEditingController();
 
 
-  String delchrs(String inputString) {
-  StringBuffer result = StringBuffer();
-  bool insideBrackets = false;
 
-  for (int i = 0; i < inputString.length; i++) {
-    if (inputString[i] == '[') {
-      insideBrackets = true;
-      continue;
-    } else if (inputString[i] == ']') {
-      insideBrackets = false;
-      continue;
-    }
-
-    if (!insideBrackets) {
-      result.write(inputString[i]);
-    }
-  }
-
-  return result.toString();
-}
 
   void logIn() async {
 
@@ -83,90 +65,75 @@ class _logInPageState extends State<logInPage> {
         await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(delchrs("email sent")),
-                                  duration: Duration(seconds: 5),
-
-                                )
-                              );
+                                snakB(texContent:"email sent", duration:3));
+                              
       }catch(e){
-        
           Navigator.pop(context);
           print(e.toString());
           ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(delchrs(e.toString())),
-                                  duration: Duration(seconds: 5),
-
-                                )
-                              );
+                                snakB(texContent:delchrs(e.toString()), duration:4));
       }
-        
-
-        
   }
 
   
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [SizedBox(height: 20,),
-              const Icon(
-                Icons.login,
-                size: 100,
-              ),
-              const SizedBox(height: 20),
-              const Text("wana log in?"),
-              textfield(
-                controller: emailController,
-                obsecureText: false,
-                hintText: "email",
-              ),
-              textfield(
-                controller: passwordController,
-                obsecureText: true,
-                hintText: "your password",
-              ),
-              TextButton(onPressed: (){
+    return authPage(Header:"wana log in?",Iconn:Icons.login, passcont:passwordController, emailcont:emailController );
+  }
 
+  Scaffold authPage( {required String Header, required IconData Iconn, required TextEditingController passcont, required TextEditingController emailcont}) {
+    return Scaffold(
+    body: SingleChildScrollView(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [SizedBox(height: 20,),
+            Icon(
+              Iconn,
+              size: 100,
+            ),
+            const SizedBox(height: 20),
+            Text(Header),
+            textfield(
+              controller: emailcont,
+              obsecureText: false,
+              hintText: "email",
+            ),
+            textfield(
+              controller: passcont,
+              obsecureText: true,
+              hintText: "your password",
+            ),
+            TextButton(onPressed: (){
+              resetPass();
+            },
+            child: Text("forgot password"),),
+            const SizedBox(height: 10,),
+            GestureDetector(
+              onTap: (){
+                Get.to(() => SignInPage());
               },
-              child: Text("forgot password"),),
-              const SizedBox(height: 10,),
-              GestureDetector(
-                onTap: (){
-                  Get.to(() => SignInPage());
-                },
-                child: const Text("don't have an account?sign up")
-                
-                ),
-              const SizedBox(height: 15),
-              Inputbutton(
-                onTap: logIn,
-                btnName:"log in"
+              child: const Text("don't have an account?sign up")
               ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: (){
-                      Get.to(() => Home());
-                    },
-                    child: Text(
-                      "continue in as guest"
-                    ),
-                  )
-                ],
-              ),
+            const SizedBox(height: 15),
+            Inputbutton(
+              onTap: logIn,
+              btnName:"log in"
+            ),
+            SizedBox(height: 10),
+            GestureDetector(
+                  onTap: (){
+                    Get.to(() => Home());
+                  },
+                  child: Text(
+                    "continue in as guest"
+                  ),
+                )
             ],
-          ),
         ),
       ),
-    );
+    ),
+  );
   }
 }

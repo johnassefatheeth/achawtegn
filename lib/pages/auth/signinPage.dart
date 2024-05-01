@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/button.dart';
+import 'package:musica/components/charEdit.dart';
 import 'package:musica/components/snackBar.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/pages/auth/logInpage.dart';
@@ -18,27 +19,6 @@ class _SignInPageState extends State<SignInPage> {
 
   final passwordController = TextEditingController();
 
-
-String delchrs(String inputString) {
-  StringBuffer result = StringBuffer();
-  bool insideBrackets = false;
-
-  for (int i = 0; i < inputString.length; i++) {
-    if (inputString[i] == '[') {
-      insideBrackets = true;
-      continue;
-    } else if (inputString[i] == ']') {
-      insideBrackets = false;
-      continue;
-    }
-
-    if (!insideBrackets) {
-      result.write(inputString[i]);
-    }
-  }
-
-  return result.toString();
-}
 
 
 
@@ -111,12 +91,7 @@ String delchrs(String inputString) {
                 btnName:"sign in"
               ),
               SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  
-                ],
-              ),
+              
             ],
           ),
         ),
