@@ -12,7 +12,8 @@ If this is your first Flutter project, here are a few resources to get you start
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
   Cookbook: Useful Flutter sample project 
 
-For more detailed guidance on Flutter development, check out the online documentation, which offers tutorials, samples, and a full API reference.
+For more detailed guidance on Flutter development, check out the online documentation, where you can find comprehensive tutorials, practical samples, and a complete API reference. It's your go-to resource for mastering Flutter and building stunning mobile experiences.
+
 
 Developer Team Members
 Meet the developers team behind Musica:
