@@ -20,3 +20,5 @@ developer team memebers
 1.Jhon Assefa
 2.Jemberu kassie
 3.Betelhem Fentahun
+4.Roza Muluken
+5.Rediet Yilma
