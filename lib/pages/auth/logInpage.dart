@@ -79,10 +79,10 @@ class _logInPageState extends State<logInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return authPage(Header:"wana log in?",Iconn:Icons.login, passcont:passwordController, emailcont:emailController );
+    return authPage(Header:"wana log in?",Iconn:Icons.login, passcont:passwordController, emailcont:emailController ,hasforgot:true);
   }
 
-  Scaffold authPage( {required String Header, required IconData Iconn, required TextEditingController passcont, required TextEditingController emailcont}) {
+  Scaffold authPage( {required String Header, required IconData Iconn, required TextEditingController passcont, required TextEditingController emailcont, required bool hasforgot}) {
     return Scaffold(
     body: SingleChildScrollView(
       child: Center(
@@ -105,10 +105,12 @@ class _logInPageState extends State<logInPage> {
               obsecureText: true,
               hintText: "your password",
             ),
+            hasforgot?
             TextButton(onPressed: (){
               resetPass();
             },
-            child: Text("forgot password"),),
+            child: Text("forgot password"),):
+            SizedBox(height: 0),
             const SizedBox(height: 10,),
             GestureDetector(
               onTap: (){
