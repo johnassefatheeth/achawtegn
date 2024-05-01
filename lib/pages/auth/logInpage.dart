@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/button.dart';
+import 'package:musica/components/snackBar.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/pages/auth/signinPage.dart';
 import 'package:musica/pages/home.dart';
@@ -60,12 +61,9 @@ class _logInPageState extends State<logInPage> {
           Navigator.pop(context);
           print(e.toString());
           ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(delchrs(e.toString())),
-                                  duration: Duration(seconds: 5),
-
+                                snakB(texContent: delchrs(e.toString()), duration: 3)
                                 )
-                              );
+                              ;
       }
         
 

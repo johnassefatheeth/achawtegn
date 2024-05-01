@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/button.dart';
+import 'package:musica/components/snackBar.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/pages/auth/logInpage.dart';
 
@@ -61,11 +62,7 @@ String delchrs(String inputString) {
         
           Navigator.pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(delchrs(e.toString())),
-                                  duration: Duration(seconds: 3),
-
-                                )
+                                snakB(texContent: delchrs(e.toString()), duration: 3)
                               );
         
       }
