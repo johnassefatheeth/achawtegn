@@ -102,16 +102,12 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
                                                                   ],
                                                                 );})                 
                                     ;
-                                                                final file = File(song.data);
+                                                                final file = File( Uri.parse(song.uri!).toString());
                                                                   if (await file.exists()) {
-                                                                    print(song.data);
-                                                                    // file.delete();
-                                                                    // Update UI or playlist 
-                                                                    // refresh the song list after deletion
+                                                                    file.delete();
                                                                   } else {
                                                                     print('Error: File not found');
                                                                   }
-                                                                // deleteSong(songs[index].uri.toString());
                                                                 Navigator.pop(context);
                                                               },
                                                             ),
@@ -119,7 +115,8 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
                                                               title: Text('Set as ringtone'),
                                                               onTap: () {
                                                                 // Handle set as ringtone option
-                                                                Navigator.pop(context);
+                                                                
+                                                                
                                                                 print('Set as ringtone option tapped');
                                                               },
                                                             ),
