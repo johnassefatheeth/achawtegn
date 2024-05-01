@@ -1,6 +1,6 @@
 ## Musica
 
-Musica is a music player application developed by a group of software engineering students at Bahir Dar University.
+Musica is a music player application developed by a group of software engineering students in Bahir Dar Institute of Technology (BIT) at Bahir Dar University .
 
 ## Getting Started
 
@@ -15,7 +15,7 @@ If this is your first Flutter project, here are a few resources to get you start
 For more detailed guidance on Flutter development, check out the online documentation, which offers tutorials, samples, and a full API reference.
 
 Developer Team Members
-Meet the talented developers behind Musica:
+Meet the developers developers team behind Musica:
 
 1.Jhon Assefa
 2.Jemberu Kassie
