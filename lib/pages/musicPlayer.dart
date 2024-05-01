@@ -45,7 +45,13 @@ class mPlayer extends StatelessWidget {
   songEndTimer?.cancel();
   songEndTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
     if (controller.position.value == controller.duration.value) {
+      if(controller.loop.value){
+        controller.playSong(data[controller.playIndex.value], controller.playIndex.value);
+      }
+      else{
       playNextSong();
+
+      }
       timer.cancel();
     }
   });
@@ -219,16 +225,9 @@ class mPlayer extends StatelessWidget {
           scale: 1.5,
           child: IconButton(
             onPressed: () {
-              if(controller.audioPlayer.shuffleModeEnabled){
-                controller.toggleShuffle();
-                print(controller.shuffle.value);
-              } else {
-                
-                controller.toggleShuffle();;
-                print(controller.shuffle.value);
-              }
+                controller.loop.value=!controller.loop.value;            
             }, 
-            icon: controller.shuffle.value ? const Icon(
+            icon: controller.loop.value ? const Icon(
               Icons.loop,
               size: 18,
               color: Color.fromARGB(255, 0, 0, 0),

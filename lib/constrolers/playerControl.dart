@@ -14,7 +14,8 @@ class playerController extends GetxController{
   var playIndex=0.obs;
   var isPLaying=false.obs;
   var musicname=''.obs;
-  var shuffle=true.obs;
+  var shuffle=false.obs;
+  var loop=false.obs;
 
 
   var duration=''.obs;
