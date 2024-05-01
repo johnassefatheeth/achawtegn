@@ -6,6 +6,7 @@ import 'package:musica/constrolers/myconstroller.dart';
 import 'package:musica/theme/themeProvider.dart';
 import 'package:provider/provider.dart';
 
+/// Represents a screen for app settings.
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -26,6 +27,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
+           // Dark Mode Switch
           ListTile(
             title: Text("Dark Mode".tr, style: Ourstyle(),),
             trailing: Switch(
@@ -38,6 +40,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
           ),
+           // Language Dropdown
           ListTile(
             title: Text("language".tr, style: Ourstyle()),
             trailing: DropdownButton<String>(
