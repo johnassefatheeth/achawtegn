@@ -35,7 +35,14 @@ changedurationtosec(seconds){
   audioPlayer.seek(duration);
 }
 
-
+/// Updates the audio player position and duration streams.
+///
+/// This method listens to the duration and position streams provided by the audio player.
+/// It updates the [duration] and [max] values based on the duration stream,
+/// and the [position] and [val] values based on the position stream.
+///
+/// Additionally, it checks if the audio player has reached the end of the track
+/// (i.e., position equals duration) and performs any necessary actions.
 updatePostion(){
   audioPlayer.durationStream.listen((d) {
     duration.value=d.toString().split(".")[0];
