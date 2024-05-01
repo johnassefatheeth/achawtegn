@@ -8,7 +8,8 @@ import 'package:musica/const/listTextStyle.dart';
 /// - [text]: The text content to display.
 /// - [IsBold]: Whether the text should be displayed in bold (default is false).
 ///
-
+/// Returns:
+/// A `Text` widget with the specified properties.
 Text Namess( { int mxln=1,  String text="",bool IsBold=false}){
   return Text(
     text,
