@@ -10,6 +10,8 @@ import 'package:on_audio_query/on_audio_query.dart';
 
 import '../../const/listTextStyle.dart';
 
+
+/// Represents a screen displaying search results for songs.
 class SearchedSongPage extends StatelessWidget {
   final String songName;
 
@@ -26,6 +28,7 @@ class SearchedSongPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: customAppBar(pagetitle: "result for $songName",context: context),
       body: FutureBuilder<List<SongModel>>(
+         // Fetch songs asynchronously based on the search term
                     future: () async {
                       final songs = await controller.audioQuery.querySongs(
                         ignoreCase: true,
@@ -83,7 +86,14 @@ class SearchedSongPage extends StatelessWidget {
                   ),
     );
   }
-
+  /// Searches for songs containing the specified [searchTerm].
+  ///
+  /// Parameters:
+  /// - [searchTerm]: The search term to match against song titles.
+  /// - [allSongs]: The list of all available songs.
+  ///
+  /// Returns:
+  /// A filtered list of songs matching the search term.
   Future<List<SongModel>> searchSongs(String searchTerm, List<SongModel> allSongs) async {
   final lowercaseSearchTerm = searchTerm.toLowerCase();
   final results = allSongs.where((song) => song.title.toLowerCase().contains(lowercaseSearchTerm)).toList();
