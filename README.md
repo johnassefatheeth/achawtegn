@@ -10,12 +10,12 @@ If this is your first Flutter project, here are a few resources to get you start
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-  Cookbook: Useful Flutter samples
+  Cookbook: Useful Flutter sample project 
 
 For more detailed guidance on Flutter development, check out the online documentation, which offers tutorials, samples, and a full API reference.
 
 Developer Team Members
-Meet the developers developers team behind Musica:
+Meet the developers team behind Musica:
 
 1.Jhon Assefa
 2.Jemberu Kassie
