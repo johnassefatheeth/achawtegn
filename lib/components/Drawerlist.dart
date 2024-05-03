@@ -17,7 +17,6 @@ class _DrawerListState extends State<DrawerList> {
         children: [
           menuItem("myprofile".tr, Icons.person),
           menuItem("settings".tr, Icons.settings),
-          menuItem("rate".tr, Icons.rate_review),
           menuItem("FaQ", Icons.format_quote)
         ],
       ),

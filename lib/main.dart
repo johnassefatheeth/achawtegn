@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const Home(),
         '/myprofile': (context) => profile(),
         '/settings': (context) => const SettingsPage(),
-        // '/rate':(context) => const Rate(),
         '/FaQ':(context) => FaQ(),
       },
     );
