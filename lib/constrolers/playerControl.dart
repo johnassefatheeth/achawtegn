@@ -2,6 +2,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:musica/components/snackBar.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -80,7 +81,7 @@ playSong(SongModel song,int index){
   updatePostion();
   }
   on Exception catch (e){
-    print(e.toString());
+    snakB(texContent: e.toString(), duration: 3);
   }
 }
 

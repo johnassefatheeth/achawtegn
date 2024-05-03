@@ -69,7 +69,6 @@ class _logInPageState extends State<logInPage> {
                               
       }catch(e){
           Navigator.pop(context);
-          print(e.toString());
           ScaffoldMessenger.of(context).showSnackBar(
                                 snakB(texContent:delchrs(e.toString()), duration:4));
       }

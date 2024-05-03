@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:musica/components/snackBar.dart';
 import 'package:musica/components/textInput.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/home.dart';
@@ -28,6 +29,7 @@ class _SongSelectionState extends State<SongSelection> {
 
   Future<void> createPlaylist(String text) async {
      await controller.audioQuery.createPlaylist(text);
+     snakB(texContent: "playlist with the name "+text+" created", duration: 2);
      Get.to(Home());
   }
 

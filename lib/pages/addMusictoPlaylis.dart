@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:musica/components/custappBar.dart';
+import 'package:musica/components/snackBar.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/home.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -74,12 +75,8 @@ class _MyWidgetState extends State<addToPlaylist> {
                         await controller.audioQuery.addToPlaylist(widget.playlistId, audioId);
                       }
                       ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text("songs added"),
-                                  duration: Duration(seconds: 3),
-
-                                )
-                              );
+                                snakB(texContent: "songs added", duration: 3)
+                                );
       
                       Navigator.of(context).pop();
                       Get.to(Home());

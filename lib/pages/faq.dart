@@ -15,9 +15,9 @@ class Faqs {
 }
 
 class FaQ extends StatelessWidget {
-  final List<Faqs> list;
+  final List<Faqs> list=[];
 
-  const FaQ({Key? key, required this.list}) : super(key: key);
+  FaQ({Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

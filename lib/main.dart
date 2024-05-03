@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:musica/constrolers/translate.dart';
 import 'package:musica/pages/UI/splashScreen.dart';
-import 'package:musica/pages/auth/logInpage.dart';
-import 'package:musica/pages/auth/signinPage.dart';
+import 'package:musica/pages/faq.dart';
 import 'package:musica/pages/home.dart';
 import 'package:musica/pages/profile.dart';
 import 'package:musica/pages/settings.dart';
@@ -45,11 +44,7 @@ class MyApp extends StatelessWidget {
         '/myprofile': (context) => profile(),
         '/settings': (context) => const SettingsPage(),
         // '/rate':(context) => const Rate(),
-        // '/FaQ':(context) => const FaQ(),
-        //navegate to sign in page
-        '/signin': (context) => SignInPage(),
-        //navagate to Login page
-        '/login': (context) => logInPage()
+        '/FaQ':(context) => FaQ(),
       },
     );
   }

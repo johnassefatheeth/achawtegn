@@ -57,7 +57,8 @@ class _profileState extends State<profile> {
                   },
                   child: Text('Edit Profile',style: TextStyle(
                     color: Theme.of(context).colorScheme.primary
-                  ),),
+                  ),
+                  ),
                 ),
               if (FirebaseAuth.instance.currentUser==null)
                 ElevatedButton(

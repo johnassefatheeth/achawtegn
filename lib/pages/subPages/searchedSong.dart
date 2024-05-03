@@ -56,14 +56,14 @@ class SearchedSongPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   tileColor: Theme.of(context).colorScheme.tertiary,
-                                  title:Namess(mxln: 2, text: snapshot.data![index].displayNameWOExt),
+                                  title:Namess(mxln: 2, text: snapshot.data![index].displayNameWOExt,IsBold: true),
                                   subtitle:Namess(mxln: 1, text: "${snapshot.data![index].artist}") ,
                                   leading:QueryArtworkWidget(
                                       id: snapshot.data![index].id, 
                                       type: ArtworkType.AUDIO,
                                       nullArtworkWidget: musicIcon(),
                                       ),
-                                  trailing: controller.playIndex.value == index && controller.isPLaying.value
+                                  trailing: controller.musicname.value == snapshot.data![index].displayName && controller.isPLaying.value
                                       ? const Icon(
                                     Icons.play_arrow,
                                     size: 26,
