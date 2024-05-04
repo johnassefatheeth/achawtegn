@@ -118,7 +118,7 @@ class _logInPageState extends State<logInPage> {
               child: const Text("don't have an account?sign up")
               ),
             const SizedBox(height: 15),
-            Inputbutton(
+            InputButton(
               onTap: logIn,
               btnName:"log in"
             ),

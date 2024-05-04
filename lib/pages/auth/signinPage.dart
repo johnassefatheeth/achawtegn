@@ -86,7 +86,7 @@ class _SignInPageState extends State<SignInPage> {
                 
                 ),
               const SizedBox(height: 15),
-              Inputbutton(
+              InputButton(
                 onTap: signup,
                 btnName:"sign in"
               ),
