@@ -5,14 +5,16 @@ import 'package:musica/components/custappBar.dart';
 import 'package:musica/pages/auth/logInpage.dart';
 import 'package:musica/pages/auth/signinPage.dart';
 
+/// Represents a screen displaying user profile information.
 class profile extends StatefulWidget {
-
+// Constructor for the profile widget (optional parameters can be added here)
 
    profile({super.key});
 
   @override
   State<profile> createState() => _profileState();
 }
+/// Returns the part of the string before the '@' sign.
 String getStringBeforeAtSign(String input) {
   int atIndex = input.indexOf('@');
   if (atIndex != -1) {

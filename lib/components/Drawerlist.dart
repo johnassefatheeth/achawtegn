@@ -8,6 +8,10 @@ class DrawerList extends StatefulWidget {
   State<DrawerList> createState() => _DrawerListState();
 }
 
+/// Represents a custom drawer menu list.
+///
+/// This widget displays a list of menu items in a column format within a container.
+/// Each menu item is created using the [menuItem] method.
 class _DrawerListState extends State<DrawerList> {
   @override
   Widget build(BuildContext context) {
@@ -22,6 +26,20 @@ class _DrawerListState extends State<DrawerList> {
       ),
     );
   }
+
+   /// Creates a menu item with the specified [title] and [icon].
+  ///
+  /// When the menu item is tapped, it navigates to the corresponding route
+  /// based on the [title]. If the title is "ማስተካከያ", it navigates to '/settings'.
+  /// If the title is "የኔ ኣካውንት", it navigates to '/myprofile'. Otherwise, it
+  /// navigates to '/$title'.
+  ///
+  /// Parameters:
+  /// - [title]: The title of the menu item.
+  /// - [icon]: The icon associated with the menu item.
+  ///
+  /// Returns:
+  /// A material-based InkWell widget representing the menu item.
 
   Widget menuItem(String title, IconData icon) {
   return Material(

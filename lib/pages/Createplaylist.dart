@@ -6,6 +6,7 @@ import 'package:musica/components/textInput.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:musica/pages/home.dart';
 
+/// Represents a screen for creating a new playlist.
 class SongSelection extends StatefulWidget {
 
   const SongSelection({Key? key, }) : super(key: key);
@@ -27,6 +28,7 @@ class _SongSelectionState extends State<SongSelection> {
     player?.dispose();
   }
 
+  /// Creates a new playlist with the specified [text].
   Future<void> createPlaylist(String text) async {
      await controller.audioQuery.createPlaylist(text);
      snakB(texContent: "playlist with the name "+text+" created", duration: 2);

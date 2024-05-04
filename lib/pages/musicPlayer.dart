@@ -8,6 +8,7 @@ import 'package:musica/const/listTextStyle.dart';
 import 'package:musica/constrolers/playerControl.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
+/// Represents the music player screen.
 class mPlayer extends StatelessWidget {
   final List<SongModel> data;
 

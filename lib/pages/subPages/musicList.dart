@@ -21,6 +21,10 @@ class PlaylistSongs extends StatefulWidget {
   State<PlaylistSongs> createState() => _PlaylistSongsState();
 }
 
+/// Represents the state of the playlist songs screen.
+///
+/// This class defines the UI for displaying a list of songs within a playlist.
+
 class _PlaylistSongsState extends State<PlaylistSongs> {
 
   @override
@@ -31,9 +35,11 @@ class _PlaylistSongsState extends State<PlaylistSongs> {
       backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: customAppBar(pagetitle: widget.pageName ,context: context),
       body:Column(
-        children: [widget.playlistId!=-1?ElevatedButton(onPressed: ( ){
+        children: [
+          // Add button to add songs to the playlist (if applicable)
+          widget.playlistId!=-1?ElevatedButton(onPressed: ( ){
           Get.to(addToPlaylist(playlistId: widget.playlistId));
-        }, child: Text("add")):SizedBox(height: 0),
+        }, child: Text("add")):SizedBox(height: 0),// Hide button if no playlist
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
